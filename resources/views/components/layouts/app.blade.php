@@ -2,7 +2,7 @@
 <html class="h-full" data-theme="true" data-theme-mode="light" dir="ltr" lang="en">
  <head><base href="../../">
   <title>
-   One Mission Admin
+   One Mission - {{ $title ?? 'Admin' }}
   </title>
   <meta charset="utf-8"/>
   <meta content="follow, index" name="robots"/>
@@ -32,32 +32,36 @@
   <link href="assets/css/styles.css" rel="stylesheet"/>
   @vite('resources/css/app.scss')
  </head>
- <body class="antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-content-scrollbar-color:#e8e8e8] [--tw-header-height:60px] [--tw-sidebar-width:270px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] lg:overflow-hidden">
+ <body class="relative antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-content-scrollbar-color:#e8e8e8] [--tw-header-height:60px] [--tw-sidebar-width:270px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] lg:overflow-hidden">
+  {{-- Toast --}}
+  @if (session()->has('success'))
+    <div class="toast absolute bottom-12 right-10 flex flex-row justify-start items-center gap-4 min-w-[300px] h-20 z-50 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 border border-gray-200 dark:border-gray-700">
+      <i class="absolute top-2 right-3 ki-filled ki-cross text-sm font-bold text-gray-500 cursor-pointer" onclick="closeToast()"></i>
+      <div class="h-full bg-success w-2 rounded-full"></div>
+      <div class="flex flex-col justify-center items-start gap-1 w-[90%]">
+        <h2 class="text-sm font-bold text-success">Success!</h2>
+        <p class="text-xs text-gray-600">{{ session('success') }}</p>
+      </div>
+    </div>
+  @endif
+  @if(session()->has('error'))
+    <div class="toast absolute bottom-12 right-10 flex flex-row justify-start items-center gap-4 min-w-[300px] h-20 z-50 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 border border-gray-200 dark:border-gray-700">
+      <i class="absolute top-2 right-3 ki-filled ki-cross text-sm font-bold text-gray-500 cursor-pointer" onclick="closeToast()"></i>
+      <div class="h-full bg-danger w-2 rounded-full"></div>
+      <div class="flex flex-col justify-center items-start gap-1 w-[90%]">
+        <h2 class="text-sm font-bold text-danger">Error!</h2>
+        <p class="text-xs text-gray-600">{{ session('error') }}</p>
+      </div>
+    </div>
+  @endif
+  {{-- End Toast --}}
   <!-- Theme Mode -->
-  <script>
-   const defaultThemeMode = 'light'; // light|dark|system
-		let themeMode;
-
-		if ( document.documentElement ) {
-			if ( localStorage.getItem('theme')) {
-					themeMode = localStorage.getItem('theme');
-			} else if ( document.documentElement.hasAttribute('data-theme-mode')) {
-				themeMode = document.documentElement.getAttribute('data-theme-mode');
-			} else {
-				themeMode = defaultThemeMode;
-			}
-
-			if (themeMode === 'system') {
-				themeMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-			}
-
-			document.documentElement.classList.add(themeMode);
-		}
-  </script>
   <!-- End of Theme Mode -->
   <!-- Page -->
   <!-- Base -->
   <div class="flex grow">
+    
+  
    <!-- Header -->
    <header class="flex lg:hidden items-center fixed z-10 top-0 start-0 end-0 shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] h-[--tw-header-height]" id="header">
     <!-- Container -->
@@ -161,7 +165,7 @@
       <!-- Primary Menu -->
       <div class="menu flex flex-col w-full gap-1.5 px-3.5" data-menu="true" data-menu-accordion-expand-all="false" id="sidebar_primary_menu">
        <div class="menu-item">
-        <a class="menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6.html">
+        <a wire:navigate class="menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('overview') }}">
          <span class="menu-icon items-start text-lg text-gray-600 menu-item-active:text-gray-800 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-active:text-gray-900 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
           <i class="ki-filled ki-home-3">
           </i>
@@ -1165,30 +1169,30 @@
            </i>
           </span>
           <span class="menu-title text-sm text-gray-800 font-medium">
-           Favorites
+           References
           </span>
          </div>
         </div>
         <div class="menu-accordion">
          <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-cards/mini-cards.html">
+          <a wire:navigate class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('categories') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
             <i class="ki-filled ki-badge">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Post Date
+            Categories
            </span>
           </a>
          </div>
          <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-cards/team-crew.html">
+          <a wire:navigate class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('tags') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
             <i class="ki-filled ki-cheque">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Licencias Creative
+            Tags
            </span>
           </a>
          </div>
@@ -4054,13 +4058,21 @@
   </div>
   <!-- End of Page -->
   <!-- Scripts -->
-  <script src="assets/js/core.bundle.js">
+  <script src="{{ url('') }}/assets/js/core.bundle.js">
   </script>
-  <script src="assets/vendors/apexcharts/apexcharts.min.js">
+  <script src="{{ url('') }}/assets/vendors/apexcharts/apexcharts.min.js">
   </script>
-  <script src="assets/js/widgets/general.js">
+  <script src="{{ url('') }}/assets/js/widgets/general.js">
   </script>
   <!-- End of Scripts -->
+  <script>
+    function closeToast() {
+      const toast = document.querySelector('.toast');
+      if (toast) {
+        toast.classList.add('hidden');
+      }
+    }
+  </script>
   @vite('resources/js/app.js')
  </body>
 </html>
