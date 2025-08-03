@@ -13,12 +13,25 @@
                 </div>
                 <div class="modal-body">
                     <div class="w-full py-5 md:py-10 px-4 md:px-8">
-                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-3">
                             <label class="form-label max-w-32">
                             Name <span class="text-red-500">*</span>
                             </label>
                             <div class="flex flex-col w-full gap-1">
-                                <input class="input" wire:model="name" placeholder="Enter category name" type="text"/>
+                                <input class="input" wire:model="name" placeholder="Enter tag name" type="text"/>
+                                @error('name')
+                                <span class="form-hint text-red-500">
+                                    {{ $message }}
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                            <label class="form-label max-w-32">
+                            Information <span class="text-red-500">*</span>
+                            </label>
+                            <div class="flex flex-col w-full gap-1">
+                                <textarea class="textarea" wire:model="info" placeholder="Enter tag information" type="text"></textarea>
                                 @error('name')
                                 <span class="form-hint text-red-500">
                                     {{ $message }}
