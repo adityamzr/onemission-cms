@@ -30,6 +30,7 @@
   <link href="assets/vendors/apexcharts/apexcharts.css" rel="stylesheet"/>
   <link href="assets/vendors/keenicons/styles.bundle.css" rel="stylesheet"/>
   <link href="assets/css/styles.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   @vite('resources/css/app.scss')
  </head>
  <body class="relative antialiased flex h-full text-base text-gray-700 [--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-content-scrollbar-color:#e8e8e8] [--tw-header-height:60px] [--tw-sidebar-width:270px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] lg:overflow-hidden">
@@ -1102,56 +1103,19 @@
            </i>
           </span>
           <span class="menu-title text-sm text-gray-800 font-medium">
-           Spaces
+           Inventory
           </span>
          </div>
-         <a class="btn btn-sm btn-icon btn-icon-sm text-gray-500 hover:text-gray-800" href="#">
-          <i class="ki-filled ki-plus">
-          </i>
-         </a>
         </div>
         <div class="menu-accordion">
-         <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/public-profile/profiles/creator.html">
+         <div class="menu-item active">
+          <a wire:navigate class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('products') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
             <i class="ki-filled ki-abstract-26">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Metrics Hub
-           </span>
-          </a>
-         </div>
-         <div class="menu-item active">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/public-profile/profiles/company.html">
-           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-41">
-            </i>
-           </span>
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Data Lab
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/public-profile/profiles/nft.html">
-           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-39">
-            </i>
-           </span>
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Creative Commons
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/public-profile/profiles/blogger.html">
-           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-35">
-            </i>
-           </span>
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            KPI Monitor
+            Products
            </span>
           </a>
          </div>
@@ -1193,28 +1157,6 @@
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
             Tags
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-cards/author.html">
-           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-users">
-            </i>
-           </span>
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Open Content
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-cards/nft.html">
-           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-security-user">
-            </i>
-           </span>
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Copyright
            </span>
           </a>
          </div>
@@ -4065,6 +4007,8 @@
   <script src="{{ url('') }}/assets/js/widgets/general.js">
   </script>
   <!-- End of Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>
     function closeToast() {
       const toast = document.querySelector('.toast');

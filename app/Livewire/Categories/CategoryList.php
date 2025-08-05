@@ -24,7 +24,6 @@ class CategoryList extends Component
         $this->resetPage();
     }
 
-
     public function render()
     {
         return view('livewire.categories.category-list', [

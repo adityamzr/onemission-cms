@@ -3,6 +3,8 @@
 use App\Livewire\Categories\CategoryForm;
 use App\Livewire\Categories\CategoryList;
 use App\Livewire\Overview;
+use App\Livewire\Products\ProductForm;
+use App\Livewire\Products\ProductList;
 use App\Livewire\Tags\TagList;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +20,11 @@ Route::get('/overview', Overview::class)->name('overview');
 //     })->name('dashboard');
 
 // });
+
+Route::prefix('products')->group(function () {
+    Route::get('/', ProductList::class)->name('products');
+    Route::get('/create', ProductForm::class)->name('products.create');
+});
 
 Route::get('/categories', CategoryList::class)->name('categories');
 

@@ -18,7 +18,7 @@
                 <button type="button" wire:click="$dispatchTo('categories.category-form', 'openModal')" class="btn btn-dark">
                     <i class="ki-filled ki-plus-squared">
                     </i>
-                    Tambah Kategori
+                    Add Kategori
                 </button>
             </div>
         </div>

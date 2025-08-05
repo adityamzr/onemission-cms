@@ -18,7 +18,7 @@
                 <button type="button" wire:click="$dispatchTo('tags.tag-form', 'openModal')" class="btn btn-dark">
                     <i class="ki-filled ki-plus-squared">
                     </i>
-                    Tambah Tag
+                    Add Tag
                 </button>
             </div>
         </div>
