@@ -5,6 +5,7 @@ use App\Livewire\Categories\CategoryList;
 use App\Livewire\Overview;
 use App\Livewire\Products\ProductForm;
 use App\Livewire\Products\ProductList;
+use App\Livewire\Products\Variants\VariantList;
 use App\Livewire\Tags\TagList;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::get('/overview', Overview::class)->name('overview');
 Route::prefix('products')->group(function () {
     Route::get('/', ProductList::class)->name('products');
     Route::get('/create', ProductForm::class)->name('products.create');
+    Route::get('/{id}/edit', ProductForm::class)->name('products.edit');
+    Route::get('/{id}/show', VariantList::class)->name('products.show');
 });
 
 Route::get('/categories', CategoryList::class)->name('categories');

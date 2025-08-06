@@ -26,7 +26,7 @@
             <!-- begin: toolbar -->
             <div class="flex flex-wrap items-center gap-5 justify-between">
             <h3 class="text-sm text-mono font-medium">
-            1 - 12 over 280 results for Nike
+            {{ $products->firstItem() }} - {{ $products->lastItem() }} over {{ $products->total() }} results
             </h3>
             <div class="flex items-center justify-end space-x-4 grow">
             <div class="input input-sm max-w-64">
@@ -141,7 +141,7 @@
                          </button>
                          <div class="dropdown-content menu-default w-full max-w-36">
                              <div class="menu-item" data-dropdown-dismiss="true">
-                                 <button class="menu-link" data-modal-toggle="#share_profile_modal">
+                                 <a href="/products/{{ $item->id }}/edit" wire:navigate class="menu-link">
                                      <span class="menu-icon">
                                          <i class="ki-filled ki-pencil">
                                          </i>
@@ -149,10 +149,10 @@
                                      <span class="menu-title">
                                      Edit
                                      </span>
-                                 </button>
+                                 </a>
                              </div>
                              <div class="menu-item" data-dropdown-dismiss="true">
-                                 <button class="menu-link" data-modal-toggle="#share_profile_modal">
+                                 <button type="button" wire:click="destroy('{{ $item->id }}')" class="menu-link">
                                      <span class="menu-icon">
                                          <i class="ki-filled ki-trash">
                                          </i>
@@ -186,7 +186,7 @@
                 <div class="flex items-center flex-wrap justify-end md:justify-between gap-5">
                     <div class="flex items-center gap-3.5">
                     <div class="border border-gray-300 bg-gray-200 rounded-xl flex items-center justify-center bg-accent/50 h-[70px] w-[90px] shadow-none">
-                    <img alt="" class="" src="{{ asset('storage/'.$item->image) }}"/>
+                    <img alt="" class="h-[70px] cursor-pointer" src="{{ asset('storage/'.$item->image) }}"/>
                     </div>
                     <div class="flex flex-col gap-2">
                     <a class="text-sm font-media/brand font-bold text-gray-900 hover:text-primary-active mb-px" href="#">
@@ -230,7 +230,7 @@
                         </button>
                         <div class="menu-dropdown menu-default w-full max-w-36" data-menu-dismiss="true">
                         <div class="menu-item">
-                        <a class="menu-link" href="html/demo6/account/home/settings-enterprise.html">
+                        <a href="/products/{{ $item->id }}/edit" wire:navigate class="menu-link">
                         <span class="menu-icon">
                             <i class="ki-filled ki-pencil">
                             </i>
@@ -241,7 +241,7 @@
                         </a>
                         </div>
                         <div class="menu-item">
-                        <a class="menu-link" href="html/demo6/account/members/import-members.html">
+                        <button type="button" wire:click="destroy('{{ $item->id }}')" class="menu-link">
                         <span class="menu-icon">
                             <i class="ki-filled ki-trash">
                             </i>
@@ -249,7 +249,7 @@
                         <span class="menu-title">
                             Delete
                         </span>
-                        </a>
+                        </button>
                         </div>
                         </div>
                     </div>

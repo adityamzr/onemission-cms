@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -40,6 +41,26 @@ class ProductForm extends Component
         ]);
     }
 
+    public function mount($id = null)
+    {
+        if ($id) {
+            $product = Product::with('category', 'tags')->where('id', $id)->first();
+            $this->id = $product->id;
+            $this->form['name'] = $product->name;
+            $this->form['categoryId'] = $product->category->id;
+            $this->form['description'] = $product->description;
+            $this->form['price'] = floor($product->price);
+            $this->form['originalPrice'] = floor($product->originalPrice);
+            $this->form['usage'] = $product->usage;
+            $this->form['technology'] = $product->technology;
+            $this->form['features'] = $product->features;
+            $this->form['composition'] = $product->composition;
+            $this->form['sustainability'] = $product->sustainability;
+            $this->form['warranty'] = $product->warranty;
+            $this->selectedTags = $product->tags->pluck('id')->toArray();
+        }
+    }
+
     public function save()
     {
         $this->validate([
@@ -47,7 +68,9 @@ class ProductForm extends Component
             'form.categoryId' => 'required',
             'form.price' => 'required|numeric',
             'form.originalPrice' => 'required|numeric',
-            'form.image' => 'required|mimes:jpg,jpeg,webp,png',
+            'form.image' => $this->id
+                ? 'nullable|mimes:jpg,jpeg,webp,png'
+                : 'required|mimes:jpg,jpeg,webp,png',
         ]);
 
         if (isset($this->form['image'])) {
@@ -63,7 +86,7 @@ class ProductForm extends Component
                 'category_id' => $this->form['categoryId'],
                 'price' => $this->form['price'],
                 'originalPrice' => $this->form['originalPrice'],
-                'image' => $path,
+                'image' => $path ?? $product->image,
                 'description' => $this->form['description'] ?? null,
                 'usage' => $this->form['usage'] ?? null,
                 'technology' => $this->form['technology'] ?? null,
@@ -73,6 +96,10 @@ class ProductForm extends Component
                 'warranty' => $this->form['warranty'] ?? null,
             ]);
             $product->save();
+
+            if (isset($this->form['image']) && $product->image && Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
+            }
         } else {
             $product = Product::create([
                 'name' => $this->form['name'],

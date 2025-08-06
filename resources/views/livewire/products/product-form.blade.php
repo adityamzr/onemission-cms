@@ -73,7 +73,7 @@
                                         <label class="form-label flex items-center gap-1 max-w-32">
                                         Image <span class="text-danger">*</span>
                                         </label>
-                                        <input wire:model="form.image" class="file-input" placeholder="Enter product image" type="file" value="" required/>
+                                        <input wire:model="form.image" class="file-input" placeholder="Enter product image" type="file" value="" @if(empty($id)) required @endif/>
                                         @error('form.image') <span class="text-xs text-red-400">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="flex flex-col space-y-3">
