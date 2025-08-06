@@ -125,6 +125,6 @@ class ProductForm extends Component
 
         $message = 'Product ' . ($this->id ? 'updated' : 'created') . ' successfully.';
         session()->flash('success', $message);
-        return $this->redirect('/products', navigate: true);
+        return $this->redirect('products/' . $product->id . '/show', navigate: true);
     }
 }

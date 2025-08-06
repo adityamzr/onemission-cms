@@ -15,8 +15,9 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('product_id');
             $table->foreign('product_id')->references('id')->on('products');
-            $table->uuid('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            // $table->uuid('user_id');
+            // $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->integer('rating');
             $table->text('comment')->nullable();
             $table->string('image')->nullable();

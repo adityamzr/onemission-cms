@@ -109,7 +109,7 @@
                  <div class="flex items-center justify-center relative w-full h-[180px] mb-4 rounded-lg bg-gray-200 border border-gray-300 shadow-none">
                      <img src="{{ asset('storage/'.$item->image) }}" class="h-[180px] shrink-0 cursor-pointer" alt="">
                  </div>
-                 <a href="" class="hover:text-primary text-sm font-bold text-mono px-1 leading-5.5 block">{{ $item->name }}</a>
+                 <a href="/products/{{ $item->id }}/show" wire:navigate class="hover:text-primary text-sm font-bold text-mono px-1 leading-5.5 block">{{ $item->name }}</a>
                  <span class="badge badge-warning badge-sm rounded-full gap-1 my-2">
                      <i class="ki-solid ki-star text-white -mt-0.5"></i>
                      5.0
@@ -126,13 +126,16 @@
                 </div>
              </div>
              <div class="flex items-center flex-wrap justify-between pb-1">
-                 <span class="badge badge-success badge-outline">
-                 Active
-                 </span>
+                @if ($item->is_active)
+                <span class="badge badge-success badge-outline">
+                Published
+                </span>
+                @else
+                <span class="badge badge-danger badge-outline">
+                Unpublished
+                </span>
+                @endif
                  <div class="flex items-center flex-wrap gap-1.5">
-                    @if($item->originalPrice != null)
-                     <span class="text-xs font-normal text-secondary-foreground line-through pt-[1px]">{{ formatRupiah($item->originalPrice) }}</span>
-                    @endif
                      <span class="text-sm font-medium text-mono">{{ formatRupiah($item->price) }}</span>
                      <div class="dropdown" data-dropdown="true" data-dropdown-placement="bottom-end" data-dropdown-placement-rtl="bottom-start" data-dropdown-trigger="click">
                          <button class="dropdown-toggle btn btn-sm btn-icon btn-light">
@@ -189,7 +192,7 @@
                     <img alt="" class="h-[70px] cursor-pointer" src="{{ asset('storage/'.$item->image) }}"/>
                     </div>
                     <div class="flex flex-col gap-2">
-                    <a class="text-sm font-media/brand font-bold text-gray-900 hover:text-primary-active mb-px" href="#">
+                    <a href="/products/{{ $item->id }}/show" wire:navigate class="text-sm font-media/brand font-bold text-gray-900 hover:text-primary-active mb-px">
                     {{ $item->name }}
                     </a>
                     <div class="flex flex-wrap items-center gap-3">
@@ -213,13 +216,16 @@
                     </div>
                     <div class="flex items-center flex-wrap gap-4">
                         <div class="flex items-center flex-wrap gap-2">
-                            @if ($item->originalPrice != null)
-                            <span class="text-xs font-normal text-secondary-foreground line-through pt-[1px]">{{ formatRupiah($item->originalPrice) }}</span>
-                            @endif
                             <span class="text-sm font-bold">{{ formatRupiah($item->price) }}</span>
+                            @if ($item->is_active)
                             <span class="badge badge-success badge-outline">
-                            Active
+                            Published
                             </span>
+                            @else
+                            <span class="badge badge-danger badge-outline">
+                            Unpublished
+                            </span>
+                            @endif
                         </div>
                     <div class="flex items-center gap-5 lg:gap-14">
                     <div class="menu" data-menu="true">
