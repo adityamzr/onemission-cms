@@ -40,12 +40,12 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-end gap-4">
             <div>
                 <p class="text-sm text-gray-700 leading-5">
+                    {!! __('Showing') !!}
                     <span class="font-medium">{{ $paginator->firstItem() }}</span>
                     {!! __('-') !!}
                     <span class="font-medium">{{ $paginator->lastItem() }}</span>
                     {!! __('of') !!}
                     <span class="font-medium">{{ $paginator->total() }}</span>
-                    
                 </p>
             </div>
 

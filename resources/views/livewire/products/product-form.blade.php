@@ -6,7 +6,7 @@
         <div class="container-fixed flex items-center justify-between flex-wrap gap-3">
             <div class="flex items-center flex-wrap gap-1 lg:gap-5">
             <h1 class="font-medium text-lg text-gray-900">
-            Create {{ $title ?? 'Onemission' }}
+            {{ $id ? 'Edit' : 'Create'  }} {{ $title ?? 'Onemission' }}
             </h1>
             </div>
         </div>
@@ -21,15 +21,10 @@
                     <div class="card card-grid min-w-full">
                         <div class="card-header py-5 flex-wrap">
                             <h3 class="card-title">
-                                Form Create {{ $title }}
+                                Form {{ $id ? 'Edit' : 'Create'  }} {{ $title }}
                             </h3>
                         </div>
                         <div class="card-body">
-                            @if($errors->any())
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            @endif
                             <div class="p-10 space-y-5">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
                                     <div class="flex flex-col space-y-3">
@@ -64,7 +59,7 @@
                                         <label class="form-label flex items-center gap-1">
                                         Original Price <span class="text-gray-500">(Optional)</span>
                                         </label>
-                                        <input wire:model="form.originalPrice" class="input" placeholder="Enter product original price" type="number" value=""/>
+                                        <input wire:model="form.originalPrice" class="input" placeholder="Enter product original price" type="number"/>
                                         @error('form.originalPrice') <span class="text-xs text-red-400">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
@@ -73,7 +68,7 @@
                                         <label class="form-label flex items-center gap-1 max-w-32">
                                         Image <span class="text-danger">*</span>
                                         </label>
-                                        <input wire:model="form.image" class="file-input" placeholder="Enter product image" type="file" value="" @if(empty($id)) required @endif/>
+                                        <input wire:model="form.image" class="file-input" placeholder="Enter product image" type="file" accept=".jpg,.jpeg,.webp,.png,.aviff" @if(empty($id)) required @endif/>
                                         @error('form.image') <span class="text-xs text-red-400">{{ $message }}</span> @enderror
                                     </div>
                                     <div class="flex flex-col space-y-3">

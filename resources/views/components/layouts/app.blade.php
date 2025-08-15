@@ -14,22 +14,22 @@
   <meta content="summary_large_image" name="twitter:card"/>
   <meta content="Metronic - Tailwind CSS " name="twitter:title"/>
   <meta content="" name="twitter:description"/>
-  <meta content="assets/media/app/og-image.png" name="twitter:image"/>
+  <meta content="{{ url('') }}/assets/media/app/og-image.png" name="twitter:image"/>
   <meta content="https://127.0.0.1:8001/metronic-tailwind-html/demo6/index.html" property="og:url"/>
   <meta content="en_US" property="og:locale"/>
   <meta content="website" property="og:type"/>
   <meta content="@keenthemes" property="og:site_name"/>
   <meta content="Metronic - Tailwind CSS " property="og:title"/>
   <meta content="" property="og:description"/>
-  <meta content="assets/media/app/og-image.png" property="og:image"/>
-  <link href="assets/media/app/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-  <link href="assets/media/app/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
-  <link href="assets/media/app/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
-  <link href="assets/media/app/favicon.ico" rel="shortcut icon"/>
+  <meta content="{{ url('') }}/assets/media/app/og-image.png" property="og:image"/>
+  <link href="{{ url('') }}/assets/media/app/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  <link href="{{ url('') }}/assets/media/app/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="{{ url('') }}/assets/media/app/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link href="{{ url('') }}/assets/media/app/favicon.ico" rel="shortcut icon"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="assets/vendors/apexcharts/apexcharts.css" rel="stylesheet"/>
-  <link href="assets/vendors/keenicons/styles.bundle.css" rel="stylesheet"/>
-  <link href="assets/css/styles.css" rel="stylesheet"/>
+  <link href="{{ url('') }}/assets/vendors/apexcharts/apexcharts.css" rel="stylesheet"/>
+  <link href="{{ url('') }}/assets/vendors/keenicons/styles.bundle.css" rel="stylesheet"/>
+  <link href="{{ url('') }}/assets/css/styles.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   @vite('resources/css/app.scss')
  </head>
@@ -68,8 +68,8 @@
     <!-- Container -->
     <div class="container-fixed flex items-center justify-between flex-wrap gap-3">
      <a href="html/demo6.html">
-      <img class="dark:hidden min-h-[30px]" src="assets/media/app/mini-logo-gray.svg"/>
-      <img class="hidden dark:block min-h-[30px]" src="assets/media/app/mini-logo-gray-dark.svg"/>
+      <img class="dark:hidden min-h-[30px]" src="{{ url('') }}/assets/media/app/mini-logo-gray.svg"/>
+      <img class="hidden dark:block min-h-[30px]" src="{{ url('') }}/assets/media/app/mini-logo-gray-dark.svg"/>
      </a>
      <button class="btn btn-icon btn-light btn-clear btn-sm -me-2" data-drawer-toggle="#sidebar">
       <i class="ki-filled ki-menu">
@@ -85,14 +85,14 @@
     <div id="sidebar_header">
      <div class="flex items-center gap-2.5 px-3.5 h-[70px]">
       <a href="html/demo6/index.html">
-       <img class="dark:hidden h-[42px]" src="assets/media/app/mini-logo-circle.svg"/>
-       <img class="hidden dark:inline-block h-[42px]" src="assets/media/app/mini-logo-circle-dark.svg"/>
+       <img class="dark:hidden h-[42px]" src="{{ url('') }}/assets/media/app/mini-logo-circle.svg"/>
+       <img class="hidden dark:inline-block h-[42px]" src="{{ url('') }}/assets/media/app/mini-logo-circle-dark.svg"/>
       </a>
       <div class="menu menu-default grow" data-menu="true">
        <div class="menu-item grow" data-menu-item-offset="0px, 15px" data-menu-item-placement="bottom-start" data-menu-item-toggle="dropdown" data-menu-item-trigger="hover">
         <div class="menu-label cursor-pointer text-gray-900 font-medium grow justify-between">
          <span class="text-base font-medium text-gray-900 grow justify-start">
-          MetronicCloud
+          ONEMISSION
          </span>
          <span class="menu-arrow">
           <i class="ki-filled ki-down">
@@ -176,7 +176,18 @@
          </span>
         </a>
        </div>
-       <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+       <div class="menu-item">
+        <a wire:navigate class="menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('products') }}">
+         <span class="menu-icon items-start text-lg text-gray-600 menu-item-active:text-gray-800 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-active:text-gray-900 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
+          <i class="ki-filled ki-home-3">
+          </i>
+         </span>
+         <span class="menu-title text-sm text-gray-800 font-medium menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+          Products
+         </span>
+        </a>
+       </div>
+       {{-- <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent">
          <span class="menu-icon items-start text-gray-600 text-lg menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
           <i class="ki-filled ki-profile-circle">
@@ -397,696 +408,7 @@
           </div>
          </div>
         </div>
-       </div>
-       <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-        <div class="menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent">
-         <span class="menu-icon items-start text-gray-600 text-lg menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
-          <i class="ki-filled ki-setting-2">
-          </i>
-         </span>
-         <span class="menu-title font-medium text-sm text-gray-800 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-          My Account
-         </span>
-         <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-          <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-          </i>
-          <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-          </i>
-         </span>
-        </div>
-        <div class="menu-accordion gap-px ps-7">
-         <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-          <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-            Account Home
-           </span>
-           <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-            <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-            </i>
-            <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-            </i>
-           </span>
-          </div>
-          <div class="menu-accordion gap-px ps-2.5">
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/home/get-started.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Get Started
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/home/user-profile.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              User Profile
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/home/company-profile.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Company Profile
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/home/settings-sidebar.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Settings - With Sidebar
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/home/settings-enterprise.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Settings - Enterprise
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/home/settings-plain.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Settings - Plain
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/home/settings-modal.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Settings - Modal
-             </span>
-            </a>
-           </div>
-          </div>
-         </div>
-         <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-          <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-            Billing
-           </span>
-           <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-            <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-            </i>
-            <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-            </i>
-           </span>
-          </div>
-          <div class="menu-accordion gap-px ps-2.5">
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/billing/basic.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Billing - Basic
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/billing/enterprise.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Billing - Enterprise
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/billing/plans.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Plans
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/billing/history.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Billing History
-             </span>
-            </a>
-           </div>
-          </div>
-         </div>
-         <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-          <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-            Security
-           </span>
-           <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-            <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-            </i>
-            <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-            </i>
-           </span>
-          </div>
-          <div class="menu-accordion gap-px ps-2.5">
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/security/get-started.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Get Started
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/security/overview.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Security Overview
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/security/allowed-ip-addresses.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Allowed IP Addresses
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/security/privacy-settings.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Privacy Settings
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/security/device-management.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Device Management
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/security/backup-and-recovery.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Backup & Recovery
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/security/current-sessions.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Current Sessions
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/security/security-log.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Security Log
-             </span>
-            </a>
-           </div>
-          </div>
-         </div>
-         <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-          <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-            Members & Roles
-           </span>
-           <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-            <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-            </i>
-            <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-            </i>
-           </span>
-          </div>
-          <div class="menu-accordion gap-px ps-2.5">
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/members/team-starter.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Teams Starter
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/members/teams.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Teams
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/members/team-info.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Team Info
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/members/members-starter.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Members Starter
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/members/team-members.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Team Members
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/members/import-members.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Import Members
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/members/roles.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Roles
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/members/permissions-toggle.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Permissions - Toggler
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/members/permissions-check.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Permissions - Check
-             </span>
-            </a>
-           </div>
-          </div>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/integrations.html">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Integrations
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/notifications.html">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Notifications
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/api-keys.html">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            API Keys
-           </span>
-          </a>
-         </div>
-         <div class="menu-item flex-col-reverse" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-          <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-           <span class="menu-title text-2sm text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
-            <span class="hidden menu-item-show:!flex">
-             Show less
-            </span>
-            <span class="flex menu-item-show:hidden">
-             Show 3 more
-            </span>
-           </span>
-           <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-            <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-            </i>
-            <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-            </i>
-           </span>
-          </div>
-          <div class="menu-accordion gap-px">
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/appearance.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Appearance
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/invite-a-friend.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Invite a Friend
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/account/activity.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Activity
-             </span>
-            </a>
-           </div>
-          </div>
-         </div>
-        </div>
-       </div>
-       <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-        <div class="menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent">
-         <span class="menu-icon items-start text-gray-600 text-lg menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
-          <i class="ki-filled ki-users">
-          </i>
-         </span>
-         <span class="menu-title font-medium text-sm text-gray-800 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-          Network
-         </span>
-         <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-          <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-          </i>
-          <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-          </i>
-         </span>
-        </div>
-        <div class="menu-accordion gap-px ps-7">
-         <div class="menu-item">
-          <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/get-started.html">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Get Started
-           </span>
-          </a>
-         </div>
-         <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-          <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-            User Cards
-           </span>
-           <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-            <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-            </i>
-            <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-            </i>
-           </span>
-          </div>
-          <div class="menu-accordion gap-px ps-2.5">
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-cards/mini-cards.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Mini Cards
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-cards/team-crew.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Team Crew
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-cards/author.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Author
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-cards/nft.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              NFT
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-cards/social.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Social
-             </span>
-            </a>
-           </div>
-          </div>
-         </div>
-         <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-          <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-            User Table
-           </span>
-           <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-            <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-            </i>
-            <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-            </i>
-           </span>
-          </div>
-          <div class="menu-accordion gap-px ps-2.5">
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-table/team-crew.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Team Crew
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-table/app-roster.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              App Roster
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-table/market-authors.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Market Authors
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-table/saas-users.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              SaaS Users
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-table/store-clients.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Store Clients
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/network/user-table/visitors.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Visitors
-             </span>
-            </a>
-           </div>
-          </div>
-         </div>
-        </div>
-       </div>
-       <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-        <div class="menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent">
-         <span class="menu-icon items-start text-gray-600 text-lg menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
-          <i class="ki-filled ki-security-user">
-          </i>
-         </span>
-         <span class="menu-title font-medium text-sm text-gray-800 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-          Authentication
-         </span>
-         <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-          <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-          </i>
-          <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-          </i>
-         </span>
-        </div>
-        <div class="menu-accordion gap-px ps-7">
-         <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-          <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-            Classic
-           </span>
-           <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-            <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-            </i>
-            <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-            </i>
-           </span>
-          </div>
-          <div class="menu-accordion gap-px ps-2.5">
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/classic/sign-in.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Sign In
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/classic/sign-up.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Sign Up
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/classic/2fa.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              2FA
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/classic/check-email.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Check Email
-             </span>
-            </a>
-           </div>
-           <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-            <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-              Reset Password
-             </span>
-             <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-              <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-              </i>
-              <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-              </i>
-             </span>
-            </div>
-            <div class="menu-accordion gap-px ps-2.5">
-             <div class="menu-item">
-              <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/classic/reset-password/enter-email.html">
-               <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-                Enter Email
-               </span>
-              </a>
-             </div>
-             <div class="menu-item">
-              <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/classic/reset-password/check-email.html">
-               <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-                Check Email
-               </span>
-              </a>
-             </div>
-             <div class="menu-item">
-              <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/classic/reset-password/change-password.html">
-               <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-                Change Password
-               </span>
-              </a>
-             </div>
-             <div class="menu-item">
-              <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/classic/reset-password/password-changed.html">
-               <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-                Password is Changed
-               </span>
-              </a>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-          <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-            Branded
-           </span>
-           <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-            <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-            </i>
-            <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-            </i>
-           </span>
-          </div>
-          <div class="menu-accordion gap-px ps-2.5">
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/branded/sign-in.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Sign In
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/branded/sign-up.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Sign Up
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/branded/2fa.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              2FA
-             </span>
-            </a>
-           </div>
-           <div class="menu-item">
-            <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/branded/check-email.html">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Check Email
-             </span>
-            </a>
-           </div>
-           <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-            <div class="menu-link py-2 px-2.5 rounded-md border border-transparent">
-             <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
-              Reset Password
-             </span>
-             <span class="menu-arrow text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
-              <i class="ki-filled ki-down text-xs menu-item-show:hidden">
-              </i>
-              <i class="ki-filled ki-up text-xs hidden menu-item-show:inline-flex">
-              </i>
-             </span>
-            </div>
-            <div class="menu-accordion gap-px ps-2.5">
-             <div class="menu-item">
-              <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/branded/reset-password/enter-email.html">
-               <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-                Enter Email
-               </span>
-              </a>
-             </div>
-             <div class="menu-item">
-              <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/branded/reset-password/check-email.html">
-               <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-                Check Email
-               </span>
-              </a>
-             </div>
-             <div class="menu-item">
-              <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/branded/reset-password/change-password.html">
-               <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-                Change Password
-               </span>
-              </a>
-             </div>
-             <div class="menu-item">
-              <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/branded/reset-password/password-changed.html">
-               <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-                Password is Changed
-               </span>
-              </a>
-             </div>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/welcome-message.html">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Welcome Message
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/account-deactivated.html">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Account Deactivated
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/error-404.html">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Error 404
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="html/demo6/authentication/error-500.html">
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Error 500
-           </span>
-          </a>
-         </div>
-        </div>
-       </div>
+       </div> --}}
       </div>
       <!-- End of Primary Menu -->
       <div class="border-b border-gray-300 mt-4 mb-1 mx-3.5">
@@ -1103,19 +425,41 @@
            </i>
           </span>
           <span class="menu-title text-sm text-gray-800 font-medium">
-           Inventory
+           Content Management
           </span>
          </div>
         </div>
         <div class="menu-accordion">
          <div class="menu-item active">
-          <a wire:navigate class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('products') }}">
+          <a wire:navigate class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
             <i class="ki-filled ki-abstract-26">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Products
+            Banner
+           </span>
+          </a>
+         </div>
+         <div class="menu-item">
+          <a wire:navigate class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
+           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
+            <i class="ki-filled ki-abstract-26">
+            </i>
+           </span>
+           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
+            Outfit
+           </span>
+          </a>
+         </div>
+         <div class="menu-item">
+          <a wire:navigate class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
+           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
+            <i class="ki-filled ki-abstract-26">
+            </i>
+           </span>
+           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
+            Gallery
            </span>
           </a>
          </div>
@@ -1172,13 +516,13 @@
      <div class="menu" data-menu="true">
       <div class="menu-item" data-menu-item-offset="-10px, 15px" data-menu-item-placement="right-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="click|lg:click">
        <div class="menu-toggle btn btn-icon rounded-full">
-        <img alt="" class="size-8 rounded-full justify-center border border-gray-500 shrink-0" src="assets/media/avatars/gray/5.png">
+        <img alt="" class="size-8 rounded-full justify-center border border-gray-500 shrink-0" src="{{ url('') }}/assets/media/avatars/gray/5.png">
         </img>
        </div>
        <div class="menu-dropdown menu-default light:border-gray-300 w-screen max-w-[250px]">
         <div class="flex items-center justify-between px-5 py-1.5 gap-1.5">
          <div class="flex items-center gap-2">
-          <img alt="" class="size-9 rounded-full border-2 border-success" src="assets/media/avatars/300-2.png">
+          <img alt="" class="size-9 rounded-full border-2 border-success" src="{{ url('') }}/assets/media/avatars/300-2.png">
            <div class="flex flex-col gap-1.5">
             <span class="text-sm text-gray-800 font-semibold leading-none">
              Cody Fisher
@@ -1346,14 +690,14 @@
            </span>
            <div class="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
             English
-            <img alt="" class="inline-block size-3.5 rounded-full" src="assets/media/flags/united-states.svg"/>
+            <img alt="" class="inline-block size-3.5 rounded-full" src="{{ url('') }}/assets/media/flags/united-states.svg"/>
            </div>
           </div>
           <div class="menu-dropdown menu-default light:border-gray-300 w-full max-w-[170px]">
            <div class="menu-item active">
             <a class="menu-link h-10" href="?dir=ltr">
              <span class="menu-icon">
-              <img alt="" class="inline-block size-4 rounded-full" src="assets/media/flags/united-states.svg"/>
+              <img alt="" class="inline-block size-4 rounded-full" src="{{ url('') }}/assets/media/flags/united-states.svg"/>
              </span>
              <span class="menu-title">
               English
@@ -1367,7 +711,7 @@
            <div class="menu-item">
             <a class="menu-link h-10" href="?dir=rtl">
              <span class="menu-icon">
-              <img alt="" class="inline-block size-4 rounded-full" src="assets/media/flags/saudi-arabia.svg"/>
+              <img alt="" class="inline-block size-4 rounded-full" src="{{ url('') }}/assets/media/flags/saudi-arabia.svg"/>
              </span>
              <span class="menu-title">
               Arabic(Saudi)
@@ -1377,7 +721,7 @@
            <div class="menu-item">
             <a class="menu-link h-10" href="?dir=ltr">
              <span class="menu-icon">
-              <img alt="" class="inline-block size-4 rounded-full" src="assets/media/flags/spain.svg"/>
+              <img alt="" class="inline-block size-4 rounded-full" src="{{ url('') }}/assets/media/flags/spain.svg"/>
              </span>
              <span class="menu-title">
               Spanish
@@ -1387,7 +731,7 @@
            <div class="menu-item">
             <a class="menu-link h-10" href="?dir=ltr">
              <span class="menu-icon">
-              <img alt="" class="inline-block size-4 rounded-full" src="assets/media/flags/germany.svg"/>
+              <img alt="" class="inline-block size-4 rounded-full" src="{{ url('') }}/assets/media/flags/germany.svg"/>
              </span>
              <span class="menu-title">
               German
@@ -1397,7 +741,7 @@
            <div class="menu-item">
             <a class="menu-link h-10" href="?dir=ltr">
              <span class="menu-icon">
-              <img alt="" class="inline-block size-4 rounded-full" src="assets/media/flags/japan.svg"/>
+              <img alt="" class="inline-block size-4 rounded-full" src="{{ url('') }}/assets/media/flags/japan.svg"/>
              </span>
              <span class="menu-title">
               Japanese
@@ -1566,7 +910,7 @@
            <div class="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-4.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-4.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -1616,7 +960,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-5.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-5.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -1657,7 +1001,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5" id="notification_request_3">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-27.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-27.png"/>
               <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -1698,7 +1042,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-1.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
               <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -1720,7 +1064,7 @@
                </span>
               </div>
               <div class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
-               <img class="h-5" src="assets/media/file-types/pdf.svg"/>
+               <img class="h-5" src="{{ url('') }}/assets/media/file-types/pdf.svg"/>
                <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1" href="#">
                 Launch_nov24.pptx
                </a>
@@ -1734,7 +1078,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-11.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-11.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -1762,7 +1106,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-14.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-14.png"/>
               <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -1785,7 +1129,7 @@
               </div>
               <div class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                <div class="flex items-center justify-center w-[26px] h-[30px] shrink-0 bg-light rounded border border-gray-200">
-                <img class="h-5" src="assets/media/file-types/figma.svg"/>
+                <img class="h-5" src="{{ url('') }}/assets/media/file-types/figma.svg"/>
                </div>
                <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1" href="#">
                 Launcher-UIkit.fig
@@ -1816,7 +1160,7 @@
            <div class="flex flex-col gap-5 pt-3 pb-4">
             <div class="flex grow gap-2.5 px-5" id="notification_request_13">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-25.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-25.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -1883,7 +1227,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-34.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-34.png"/>
               <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -1906,7 +1250,7 @@
               </div>
               <div class="card shadow-none flex items-center justify-between flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                <div class="flex items-center gap-1.5">
-                <img class="h-6" src="assets/media/file-types/xls.svg"/>
+                <img class="h-6" src="{{ url('') }}/assets/media/file-types/xls.svg"/>
                 <div class="flex flex-col gap-0.5">
                  <a class="hover:text-primary-active font-medium text-gray-700 text-xs" href="#">
                   Redesign-2024.xls
@@ -1933,7 +1277,7 @@
             </div>
             <div class="flex grow gap-2 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-29.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-29.png"/>
               <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -1972,10 +1316,10 @@
                 </div>
                 <div class="flex -space-x-2">
                  <div class="flex">
-                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-3.png"/>
+                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-3.png"/>
                  </div>
                  <div class="flex">
-                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-2.png"/>
+                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-2.png"/>
                  </div>
                 </div>
                </div>
@@ -1994,7 +1338,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5" id="notification_request_3">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-30.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-30.png"/>
               <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2033,7 +1377,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-24.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-24.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2078,7 +1422,7 @@
            <div class="flex flex-col gap-5 pt-3 pb-4">
             <div class="flex grow gap-2 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-15.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-15.png"/>
               <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2125,13 +1469,13 @@
                 </div>
                 <div class="flex -space-x-2">
                  <div class="flex">
-                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-4.png"/>
+                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-4.png"/>
                  </div>
                  <div class="flex">
-                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-1.png"/>
+                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
                  </div>
                  <div class="flex">
-                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-2.png"/>
+                  <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-2.png"/>
                  </div>
                  <div class="flex">
                   <span class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse size-6 ring-success-light bg-success">
@@ -2155,7 +1499,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-6.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-6.png"/>
               <span class="size-1.5 badge badge-circle absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2184,7 +1528,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-12.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-12.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2207,7 +1551,7 @@
               </div>
               <div class="card shadow-none flex items-center justify-between flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                <div class="flex items-center gap-1.5">
-                <img class="h-6" src="assets/media/file-types/word.svg"/>
+                <img class="h-6" src="{{ url('') }}/assets/media/file-types/word.svg"/>
                 <div class="flex flex-col gap-0.5">
                  <a class="hover:text-primary-active font-medium text-gray-700 text-xs" href="#">
                   Landing-page.docx
@@ -2230,7 +1574,7 @@
               </div>
               <div class="card shadow-none flex items-center justify-between flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                <div class="flex items-center gap-1.5">
-                <img class="h-6" src="assets/media/file-types/svg.svg"/>
+                <img class="h-6" src="{{ url('') }}/assets/media/file-types/svg.svg"/>
                 <div class="flex flex-col gap-0.5">
                  <a class="hover:text-primary-active font-medium text-gray-700 text-xs" href="#">
                   New-icon.svg
@@ -2257,7 +1601,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-21.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-21.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2306,7 +1650,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5" id="notification_request_3">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-13.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-13.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2362,7 +1706,7 @@
            <div class="flex flex-col gap-5 pt-3 pb-4">
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-1.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
               <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2388,7 +1732,7 @@
               </div>
               <div class="flex items-center gap-2.5">
                <div class="card shadow-none flex flex-col gap-3.5 bg-light-active w-40">
-                <div class="bg-cover bg-no-repeat card-rounded-t shrink-0 h-24" style="background-image: url('assets/media/images/600x600/6.jpg')">
+                <div class="bg-cover bg-no-repeat card-rounded-t shrink-0 h-24" style="background-image: url('{{ url('') }}/assets/media/images/600x600/6.jpg')">
                 </div>
                 <div class="px-2.5 pb-2">
                  <a class="font-medium block text-gray-700 hover:text-primary text-xs leading-4 mb-0.5" href="#">
@@ -2403,7 +1747,7 @@
                 </div>
                </div>
                <div class="card shadow-none flex flex-col gap-3.5 bg-light-active w-40">
-                <div class="bg-cover bg-no-repeat card-rounded-t shrink-0 h-24" style="background-image: url('assets/media/images/600x600/1.jpg')">
+                <div class="bg-cover bg-no-repeat card-rounded-t shrink-0 h-24" style="background-image: url('{{ url('') }}/assets/media/images/600x600/1.jpg')">
                 </div>
                 <div class="px-2.5 pb-2">
                  <a class="font-medium block text-gray-700 hover:text-primary text-xs leading-4 mb-0.5" href="#">
@@ -2424,7 +1768,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5" id="notification_request_17">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-19.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-19.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2447,7 +1791,7 @@
               </div>
               <div class="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
                <div class="flex items-center justify-center w-[26px] h-[30px] shrink-0 bg-white rounded border border-gray-200">
-                <img class="h-5" src="assets/media/brand-logos/jira.svg"/>
+                <img class="h-5" src="{{ url('') }}/assets/media/brand-logos/jira.svg"/>
                </div>
                <a class="hover:text-primary-active font-medium text-gray-700 text-xs me-1" href="#">
                 User-feedback.jira
@@ -2470,7 +1814,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-17.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-17.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2504,7 +1848,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-34.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-34.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2532,7 +1876,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-9.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-9.png"/>
               <span class="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2569,7 +1913,7 @@
             </div>
             <div class="flex grow gap-2.5 px-5" id="notification_request_3">
              <div class="relative shrink-0 mt-0.5">
-              <img alt="" class="rounded-full size-8" src="assets/media/avatars/300-13.png"/>
+              <img alt="" class="rounded-full size-8" src="{{ url('') }}/assets/media/avatars/300-13.png"/>
               <span class="size-1.5 badge badge-circle badge-success absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2">
               </span>
              </div>
@@ -2866,7 +2210,7 @@
            <div class="menu-link flex items-center jistify-between gap-2">
             <div class="flex items-center grow gap-2">
              <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-              <img alt="" class="size-6 shrink-0" src="assets/media/brand-logos/jira.svg"/>
+              <img alt="" class="size-6 shrink-0" src="{{ url('') }}/assets/media/brand-logos/jira.svg"/>
              </div>
              <div class="flex flex-col gap-0.5">
               <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -2880,13 +2224,13 @@
             <div class="flex justify-end shrink-0">
              <div class="flex -space-x-2">
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-4.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-4.png"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-1.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-2.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-2.png"/>
               </div>
               <div class="flex">
                <span class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse size-6 ring-success-light bg-success">
@@ -2901,7 +2245,7 @@
            <div class="menu-link flex items-center jistify-between gap-2">
             <div class="flex items-center grow gap-2">
              <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-              <img alt="" class="size-6 shrink-0" src="assets/media/brand-logos/inferno.svg"/>
+              <img alt="" class="size-6 shrink-0" src="{{ url('') }}/assets/media/brand-logos/inferno.svg"/>
              </div>
              <div class="flex flex-col gap-0.5">
               <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -2915,13 +2259,13 @@
             <div class="flex justify-end shrink-0">
              <div class="flex -space-x-2">
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-14.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-14.png"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-12.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-12.png"/>
               </div>
               <div class="flex">
-               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-9.png"/>
+               <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-9.png"/>
               </div>
              </div>
             </div>
@@ -2940,7 +2284,7 @@
            <div class="menu-item">
             <div class="menu-link flex justify-between gap-2">
              <div class="flex items-center gap-2.5">
-              <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-3.png"/>
+              <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-3.png"/>
               <div class="flex flex-col">
                <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
                 Tyler Hero
@@ -2966,7 +2310,7 @@
            <div class="menu-item">
             <div class="menu-link flex justify-between gap-2">
              <div class="flex items-center gap-2.5">
-              <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-1.png"/>
+              <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
               <div class="flex flex-col">
                <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
                 Esther Howard
@@ -3109,7 +2453,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="assets/media/brand-logos/jira.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ url('') }}/assets/media/brand-logos/jira.svg"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -3123,13 +2467,13 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-4.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-4.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-1.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-2.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-2.png"/>
             </div>
             <div class="flex">
              <span class="hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs size-6 text-success-inverse size-6 ring-success-light bg-success">
@@ -3144,7 +2488,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="assets/media/brand-logos/inferno.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ url('') }}/assets/media/brand-logos/inferno.svg"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -3158,13 +2502,13 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-14.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-14.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-12.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-12.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-9.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-9.png"/>
             </div>
            </div>
           </div>
@@ -3174,7 +2518,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="assets/media/brand-logos/evernote.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ url('') }}/assets/media/brand-logos/evernote.svg"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -3188,16 +2532,16 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-6.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-6.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-3.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-3.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-1.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-8.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-8.png"/>
             </div>
            </div>
           </div>
@@ -3207,7 +2551,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="assets/media/brand-logos/gitlab.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ url('') }}/assets/media/brand-logos/gitlab.svg"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -3221,10 +2565,10 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-18.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-18.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-17.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-17.png"/>
             </div>
            </div>
           </div>
@@ -3234,7 +2578,7 @@
          <div class="menu-link flex items-center jistify-between gap-2">
           <div class="flex items-center grow gap-2">
            <div class="flex items-center justify-center size-10 shrink-0 rounded-full border border-gray-200 bg-gray-100">
-            <img alt="" class="size-6 shrink-0" src="assets/media/brand-logos/google-webdev.svg"/>
+            <img alt="" class="size-6 shrink-0" src="{{ url('') }}/assets/media/brand-logos/google-webdev.svg"/>
            </div>
            <div class="flex flex-col gap-0.5">
             <a class="text-2sm font-semibold text-gray-900 hover:text-primary-active" href="#">
@@ -3248,13 +2592,13 @@
           <div class="flex justify-end shrink-0">
            <div class="flex -space-x-2">
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-14.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-14.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-20.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-20.png"/>
             </div>
             <div class="flex">
-             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="assets/media/avatars/300-21.png"/>
+             <img class="hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light size-6" src="{{ url('') }}/assets/media/avatars/300-21.png"/>
             </div>
            </div>
           </div>
@@ -3273,7 +2617,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-3.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-3.png"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               Tyler Hero
@@ -3299,7 +2643,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-1.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               Esther Howard
@@ -3325,7 +2669,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-11.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-11.png"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               Jacob Jones
@@ -3351,7 +2695,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-5.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-5.png"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               TLeslie Alexander
@@ -3377,7 +2721,7 @@
          <div class="menu-item">
           <div class="menu-link flex justify-between gap-2">
            <div class="flex items-center gap-2.5">
-            <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-2.png"/>
+            <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-2.png"/>
             <div class="flex flex-col">
              <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
               Cody Fisher
@@ -3414,7 +2758,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="assets/media/file-types/pdf.svg"/>
+            <img src="{{ url('') }}/assets/media/file-types/pdf.svg"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               Project-pitch.pdf
@@ -3433,7 +2777,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="assets/media/file-types/doc.svg"/>
+            <img src="{{ url('') }}/assets/media/file-types/doc.svg"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               Report-v1.docx
@@ -3452,7 +2796,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="assets/media/file-types/javascript.svg"/>
+            <img src="{{ url('') }}/assets/media/file-types/javascript.svg"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               Framework-App.js
@@ -3471,7 +2815,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="assets/media/file-types/ai.svg"/>
+            <img src="{{ url('') }}/assets/media/file-types/ai.svg"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               Framework-App.js
@@ -3490,7 +2834,7 @@
          <div class="menu-item">
           <div class="menu-link flex items-center">
            <div class="flex items-center grow gap-2.5">
-            <img src="assets/media/file-types/php.svg"/>
+            <img src="{{ url('') }}/assets/media/file-types/php.svg"/>
             <div class="flex flex-col">
              <span class="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               appController.js
@@ -3517,8 +2861,8 @@
       <div class="hidden" id="search_modal_empty">
        <div class="flex flex-col text-center py-9 gap-5">
         <div class="flex justify-center">
-         <img alt="image" class="dark:hidden max-h-[113px]" src="assets/media/illustrations/33.svg"/>
-         <img alt="image" class="light:hidden max-h-[113px]" src="assets/media/illustrations/33-dark.svg"/>
+         <img alt="image" class="dark:hidden max-h-[113px]" src="{{ url('') }}/assets/media/illustrations/33.svg"/>
+         <img alt="image" class="light:hidden max-h-[113px]" src="{{ url('') }}/assets/media/illustrations/33-dark.svg"/>
         </div>
         <div class="flex flex-col gap-1.5">
          <h3 class="text-base font-semibold text-gray-900 text-center">
@@ -3541,8 +2885,8 @@
       <div class="hidden" id="search_modal_no-results">
        <div class="flex flex-col text-center py-9 gap-5">
         <div class="flex justify-center">
-         <img alt="image" class="dark:hidden max-h-[113px]" src="assets/media/illustrations/33.svg"/>
-         <img alt="image" class="light:hidden max-h-[113px]" src="assets/media/illustrations/33-dark.svg"/>
+         <img alt="image" class="dark:hidden max-h-[113px]" src="{{ url('') }}/assets/media/illustrations/33.svg"/>
+         <img alt="image" class="light:hidden max-h-[113px]" src="{{ url('') }}/assets/media/illustrations/33-dark.svg"/>
         </div>
         <div class="flex flex-col gap-1.5">
          <h3 class="text-base font-semibold text-gray-900 text-center">
@@ -3616,7 +2960,7 @@
       <div class="flex flex-col px-5 gap-3">
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-3.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-3.png"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Tyler Hero
@@ -3640,7 +2984,7 @@
        </div>
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-1.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Esther Howard
@@ -3664,7 +3008,7 @@
        </div>
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-11.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-11.png"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Jacob Jones
@@ -3782,7 +3126,7 @@
       <div class="flex flex-col px-5 gap-3">
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-3.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-3.png"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Tyler Hero
@@ -3806,7 +3150,7 @@
        </div>
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-1.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Esther Howard
@@ -3830,7 +3174,7 @@
        </div>
        <div class="flex items-center flex-wrap gap-2">
         <div class="flex items-center grow gap-2.5">
-         <img alt="" class="rounded-full size-9 shrink-0" src="assets/media/avatars/300-11.png"/>
+         <img alt="" class="rounded-full size-9 shrink-0" src="{{ url('') }}/assets/media/avatars/300-11.png"/>
          <div class="flex flex-col">
           <a class="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px" href="#">
            Jacob Jones
@@ -3910,7 +3254,7 @@
      <div class="p-5">
       <div class="grid place-items-center gap-1">
        <div class="flex justify-center items-center rounded-full">
-        <img class="rounded-full max-h-[55px] max-w-full" src="assets/media/avatars/300-1.png"/>
+        <img class="rounded-full max-h-[55px] max-w-full" src="{{ url('') }}/assets/media/avatars/300-1.png"/>
        </div>
        <div class="flex items-center justify-center gap-1">
         <a class="hover:text-primary-active text-2sm leading-5 font-semibold text-gray-900" href="#">
@@ -4000,11 +3344,11 @@
   </div>
   <!-- End of Page -->
   <!-- Scripts -->
-  <script src="{{ url('') }}/assets/js/core.bundle.js">
+  <script src="{{ url('') }}/{{ url('') }}/assets/js/core.bundle.js">
   </script>
-  <script src="{{ url('') }}/assets/vendors/apexcharts/apexcharts.min.js">
+  <script src="{{ url('') }}/{{ url('') }}/assets/vendors/apexcharts/apexcharts.min.js">
   </script>
-  <script src="{{ url('') }}/assets/js/widgets/general.js">
+  <script src="{{ url('') }}/{{ url('') }}/assets/js/widgets/general.js">
   </script>
   <!-- End of Scripts -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

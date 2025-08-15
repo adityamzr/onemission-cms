@@ -67,7 +67,6 @@ class ProductForm extends Component
             'form.name' => 'required|string|max:255',
             'form.categoryId' => 'required',
             'form.price' => 'required|numeric',
-            'form.originalPrice' => 'required|numeric',
             'form.image' => $this->id
                 ? 'nullable|mimes:jpg,jpeg,webp,png'
                 : 'required|mimes:jpg,jpeg,webp,png',
@@ -105,7 +104,7 @@ class ProductForm extends Component
                 'name' => $this->form['name'],
                 'category_id' => $this->form['categoryId'],
                 'price' => $this->form['price'],
-                'originalPrice' => $this->form['originalPrice'],
+                'originalPrice' => $this->form['originalPrice'] ?? 0,
                 'image' => $path,
                 'description' => $this->form['description'] ?? null,
                 'usage' => $this->form['usage'] ?? null,

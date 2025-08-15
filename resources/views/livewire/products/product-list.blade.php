@@ -9,6 +9,11 @@
                     <h1 class="font-medium text-lg text-gray-900">
                         {{ $title }}
                     </h1>
+                    <div class="flex items-center gap-1 text-sm">
+                        <a wire:navigate class="text-secondary-foreground hover:text-gray-900" href="{{ route('overview') }}">Home</a>
+                        <span class="text-secondary-foreground text-sm"> / </span>
+                        <span class="text-secondary-foreground hover:text-gray-900">{{ $title }}</span>
+                    </div>
                 </div>
                 <div class="flex items-center flex-wrap gap-1.5 lg:gap-3.5">
                     {{-- <a class="btn btn-sm btn-light" href="html/demo6/account/home/get-started.html">
@@ -78,11 +83,11 @@
                 </div>
                 </div>
             <div class="btn-tabs" data-tabs="true">
-                <a class="btn btn-icon active" data-tab-toggle="#projects_cards" href="#">
+                <a class="btn btn-icon active" data-tab-toggle="#projects_cards">
                     <i class="ki-filled ki-category">
                     </i>
-                    </a>
-                    <a class="btn btn-icon" data-tab-toggle="#projects_list" href="#">
+                </a>
+                <a class="btn btn-icon" data-tab-toggle="#projects_list">
                     <i class="ki-filled ki-row-horizontal">
                     </i>
                 </a>
@@ -117,10 +122,10 @@
                  <div class="flex flex-wrap items-center gap-3">
                      <div class="flex items-center flex-wrap gap-2 lg:gap-4">
                          <span class="text-xs text-gray-700">
-                          SKU: <span class="text-xs font-bold">SH-001-Black</span>
+                          Category: <span class="text-xs font-bold">{{ $item->category->name }}</span>
                          </span>
                          <span class="text-xs text-gray-700">
-                          Stock: <span class="text-xs font-bold">128</span>
+                          Stock: <span class="text-xs font-bold">{{ $item->variants->flatMap->sizes->sum('stock') }}</span>
                          </span>
                      </div>
                 </div>
@@ -174,9 +179,7 @@
            {{-- end: items --}}
           </div>
           <div class="flex grow justify-center pt-5 lg:pt-7.5">
-           <a class="btn btn-link" href="#">
-            Show more products
-           </a>
+           {{ $products->links('vendor.livewire.tailwind') }}
           </div>
          </div>
          <!-- end: cards -->
@@ -201,14 +204,14 @@
                             5.0
                         </span>
                         <div class="flex items-center flex-wrap gap-2 lg:gap-4">
-                            <span class="text-xs text-gray-700">
+                            {{-- <span class="text-xs text-gray-700">
                                 SKU: <span class="text-xs font-bold">SH-001-Black</span>
-                            </span>
+                            </span> --}}
                             <span class="text-xs text-gray-700">
                                 Category: <span class="text-xs font-bold">{{ $item->category->name }}</span>
                             </span>
                             <span class="text-xs text-gray-700">
-                                Stock: <span class="text-xs font-bold">128</span>
+                                Stock: <span class="text-xs font-bold">{{ $item->variants->flatMap->sizes->sum('stock') }}</span>
                             </span>
                         </div>
                     </div>
@@ -267,9 +270,7 @@
                 @endforeach
             </div>
             <div class="flex grow justify-center pt-5 lg:pt-7.5">
-            <a class="btn btn-link" href="#">
-            Show more projects
-            </a>
+            {{ $products->links('vendor.livewire.tailwind') }}
             </div>
         </div>
          
