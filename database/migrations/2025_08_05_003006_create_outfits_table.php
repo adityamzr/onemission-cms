@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('model_height');
             $table->string('model_size');
             $table->boolean('is_shown')->default(true);
+            $table->timestamps();
         });
     }
 

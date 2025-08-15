@@ -9,7 +9,9 @@ class VariantImage extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
+
+    public $timestamps = false;
 
     public function variant()
     {

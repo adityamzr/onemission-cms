@@ -3,17 +3,24 @@
 namespace App\Livewire\Products\Variants;
 
 use App\Models\Product;
+use App\Models\Variant;
+use App\Models\VariantSize;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class VariantList extends Component
 {
-    public $title = 'Product Detail';
-    public $id;
+    public $title = 'Product';
+    public $subtitle = 'Detail';
+    public $childtitle = 'Variant';
+    public $id, $search;
+    public $perpage = 5;
 
     public function render()
     {
         return view('livewire.products.variants.variant-list', [
-            'product' => Product::with('category', 'tags')->where('id', $this->id)->first()
+            'product' => Product::with('category', 'tags')->where('id', $this->id)->first(),
+            'variants' => Variant::with('sizes', 'images')->where('product_id', $this->id)->paginate($this->perpage)
         ]);
     }
 
@@ -39,5 +46,30 @@ class VariantList extends Component
         $product->update([
             "$col" => $product->$col ? false : true
         ]);
+    }
+
+    public function deleteVariant($id)
+    {
+        $variant = Variant::with('sizes', 'images')->find($id);
+
+        if (!$variant) {
+            session()->flash('error', 'Variant not found');
+            return redirect()->route('products');
+        }
+
+        if ($variant->images->isNotEmpty()) {
+            $firstImagePath = $variant->images->first()->image_url;
+            $folderPath = dirname($firstImagePath);
+
+            Storage::disk('public')->deleteDirectory($folderPath);
+        }
+
+        $variant->sizes()->delete();
+        $variant->images()->delete();
+
+        $variant->delete();
+
+        session()->flash('success', 'Deleted variant successfully');
+        return redirect()->route('products.show', [$this->id]);
     }
 }

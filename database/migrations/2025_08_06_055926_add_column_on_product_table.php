@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->boolean('us_status')->after('usage')->default(true);
-            $table->boolean('tec_status')->after('technology')->default(true);
-            $table->boolean('ft_status')->after('features')->default(true);
-            $table->boolean('com_status')->after('composition')->default(true);
-            $table->boolean('sus_status')->after('sustainable')->default(true);
-            $table->boolean('war_status')->after('warranty')->default(true);
+            $table->boolean('us_status')->after('usage')->default(false);
+            $table->boolean('tec_status')->after('technology')->default(false);
+            $table->boolean('ft_status')->after('features')->default(false);
+            $table->boolean('com_status')->after('composition')->default(false);
+            $table->boolean('sus_status')->after('sustainable')->default(false);
+            $table->boolean('war_status')->after('warranty')->default(false);
         });
     }
 

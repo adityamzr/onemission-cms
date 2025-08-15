@@ -132,7 +132,7 @@
                                     <div class="pagination" data-datatable-pagination="true">
                                     </div>
                                 </div>
-                                {{ $tags->links() }}
+                                {{ $tags->links('vendor.livewire.tailwind') }}
                             </div>
                         </div>
                     </div>

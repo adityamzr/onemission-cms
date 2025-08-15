@@ -11,6 +11,14 @@ class VariantSize extends Model
 
     protected $guarded = ['id'];
 
+    protected $fillable = [
+        'variant_id',
+        'size',
+        'stock'
+    ];
+
+    public $timestamps = false;
+
     public function variant()
     {
         return $this->belongsTo(Variant::class, 'variant_id');

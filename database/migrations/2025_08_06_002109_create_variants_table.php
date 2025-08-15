@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2)->nullable();
             $table->boolean('is_active')->default(false);
             $table->boolean('in_stock')->default(false);
+            $table->timestamps();
         });
     }
 
