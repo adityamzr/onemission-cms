@@ -40,8 +40,15 @@
                                             @if (!empty($images))
                                             <div class="flex flex-wrap items-center justify-center md:justify-start gap-5">
                                                 @foreach ($images as $index => $item)
+                                                @php
+                                                    $itemId = is_array($item) ? ($item['id'] ?? null) : ($item->id ?? null);
+                                                @endphp
                                                 <div class="flex items-center justify-center relative size-[140px] mb-4 rounded-lg bg-gray-200 border border-gray-300 shadow-none">
+                                                    @if ($variantId)
+                                                    <button wire:click="removeImage({{ $index }}, '{{ $itemId }}', '{{ @$variantId }}')" wire:confirm="Are you sure you want to remove this item?" type="button" class="absolute -right-3 -top-3">
+                                                    @else
                                                     <button wire:click="removeImage({{ $index }})" type="button" class="absolute -right-3 -top-3">
+                                                    @endif
                                                         <i class="ki-solid ki-cross-circle text-danger text-2xl"></i>
                                                     </button>
                                                     @php
@@ -146,10 +153,21 @@
                             <div class="px-10 mb-10 space-y-5">
                                 @foreach ($sizes as $index => $item)
                                 <div class="card p-5">
+                                    <div class="flex justify-between gap-4">
+                                        <h4 class="text-sm font-semibold mb-2">Size {{ $index + 1 }}</h4>
+                                        @php
+                                            $itemId = is_array($item) ? ($item['id'] ?? null) : ($item->id ?? null);
+                                        @endphp
+                                        @if ($variantId)
+                                        <i wire:click="removeSize({{ $index }}, {{ $itemId }}, '{{ @$variantId }}')" wire:confirm="Are you sure you want to remove this item?" class="ki-outline ki-trash text-danger text-2xl cursor-pointer"></i>
+                                        @else
+                                        <i wire:click="removeSize({{ $index }})" class="ki-outline ki-trash text-danger text-2xl cursor-pointer"></i>
+                                        @endif
+                                    </div>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
                                         <div class="flex flex-col space-y-3">
                                             <label class="form-label flex items-center gap-1 max-w-32">
-                                            Size {{ $index + 1 }} <span class="text-danger">*</span>
+                                            Size <span class="text-danger">*</span>
                                             </label>
                                             <input wire:model="sizes.{{ $index }}.size" class="input" placeholder="Enter size" type="text" required/>
                                             @error('sizes.{{ $index }}.size') <span class="text-xs text-red-400">{{ $message }}</span> @enderror
@@ -158,22 +176,74 @@
                                             <label class="form-label flex items-center gap-1 max-w-32">
                                             Stock <span class="text-danger">*</span>
                                             </label>
-                                            <div class="flex justify-between items-center gap-2">
-                                                <input wire:model="sizes.{{ $index }}.stock" class="input" placeholder="Enter stock" type="number" required/>
-                                                <i wire:click="removeSize({{ $index }})" class="ki-outline ki-trash text-danger text-2xl cursor-pointer"></i>
-                                            </div>
+                                            <input wire:model="sizes.{{ $index }}.stock" class="input" placeholder="Enter stock" type="number" required/>
                                             @error('sizes.{{ $index }}.stock') <span class="text-xs text-red-400">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                 </div>
                                 @endforeach
-                                <button wire:click="addSize" type="button" class="btn btn-dark">Add Size</button>
+                                <button wire:click="addSize" type="button" class="btn btn-dark mr-2">Add Size</button>
+                                @if (empty($details))
+                                <button wire:click="addDetail" type="button" class="btn btn-dark">Add Detail</button>
+                                @endif
+                            </div>
+                            <div class="px-10 mb-10 space-y-5">
+                                @foreach ($details as $index => $item)
+                                <div class="card p-5">
+                                    <div class="flex justify-between gap-4">
+                                        <h4 class="text-sm font-semibold mb-2">Detail {{ $index + 1 }}</h4>
+                                        @php
+                                            $itemId = is_array($item) ? ($item['id'] ?? null) : ($item->id ?? null);
+                                        @endphp
+                                        @if ($variantId)
+                                        <i wire:click="removeDetail({{ $index }}, {{ $itemId }}, '{{ @$variantId }}')" wire:confirm="Are you sure you want to remove this item?" class="ki-outline ki-trash text-danger text-2xl cursor-pointer"></i>
+                                        @else
+                                        <i wire:click="removeDetail({{ $index }})" class="ki-outline ki-trash text-danger text-2xl cursor-pointer"></i>
+                                        @endif
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+                                        <div class="flex flex-col space-y-3">
+                                            <label class="form-label flex items-center gap-1 max-w-32">
+                                            Info <span class="text-gray-500">(Optional)</span>
+                                            </label>
+                                            <textarea wire:model="details.{{ $index }}.info" class="textarea" rows="4" placeholder="Enter info" type="text" required></textarea>
+                                            @error('details.{{ $index }}.info') <span class="text-xs text-red-400">{{ $message }}</span> @enderror
+                                        </div>
+                                        <div class="flex flex-col space-y-3">
+                                            <label class="form-label flex items-center gap-1 max-w-32">
+                                            Image <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="flex justify-between gap-2">
+                                                <div class="flex items-center justify-center size-[115px] mb-4 rounded-lg bg-gray-200 border border-gray-300 shadow-none">
+                                                    @if ($item['image_url'])
+                                                    @php
+                                                        $path = $item['image_url'] instanceof \Livewire\Features\SupportFileUploads\TemporaryUploadedFile
+                                                                ? $item['image_url']->temporaryUrl()
+                                                                : asset('storage/' . $item['image_url']);
+                                                    @endphp
+                                                    <img src="{{ $path }}" class="h-full" alt="">
+                                                    @else
+                                                    <span class="text-sm text-secondary-inverse">Preview</span>
+                                                    @endif
+                                                </div>
+                                                <input type="file" wire:model="details.{{ $index }}.image_url" class="file-input" accept=".jpg,.jpeg,.png,.webp">
+                                            </div>
+                                            @error('details.{{ $index }}.image_url') <span class="text-xs text-red-400">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @if (!empty($details))
+                                <button wire:click="addDetail" type="button" class="btn btn-dark">Add Detail</button>
+                                @endif
                             </div>
                         </div>
                         <div class="card-footer justify-between md:justify-end flex-col md:flex-row gap-3 text-gray-600 text-2sm font-medium">
+                            @if (empty($variantId))
                             <button type="button" wire:click="cancel" wire:confirm="Are you sure you want to cancel this {{ $variantId ? 'Edit' : 'Create'  }} {{ $title }}?" class="btn btn-light">
                                 Cancel
                             </button>
+                            @endif
                             <button type="submit" class="btn btn-primary">
                                 Save {{ $title }}
                             </button>

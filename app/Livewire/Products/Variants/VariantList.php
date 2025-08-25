@@ -50,7 +50,7 @@ class VariantList extends Component
 
     public function deleteVariant($id)
     {
-        $variant = Variant::with('sizes', 'images')->find($id);
+        $variant = Variant::with('sizes', 'images', 'details')->find($id);
 
         if (!$variant) {
             session()->flash('error', 'Variant not found');
@@ -64,8 +64,16 @@ class VariantList extends Component
             Storage::disk('public')->deleteDirectory($folderPath);
         }
 
+        if ($variant->details->isNotEmpty()) {
+            $firstImagePath = $variant->details->first()->image_url;
+            $folderPath = dirname($firstImagePath);
+
+            Storage::disk('public')->deleteDirectory($folderPath);
+        }
+
         $variant->sizes()->delete();
         $variant->images()->delete();
+        $variant->details()->delete();
 
         $variant->delete();
 

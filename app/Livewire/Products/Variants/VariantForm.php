@@ -4,6 +4,7 @@ namespace App\Livewire\Products\Variants;
 
 use App\Models\Product;
 use App\Models\Variant;
+use App\Models\VariantDetail;
 use App\Models\VariantImage;
 use App\Models\VariantSize;
 use Exception;
@@ -22,6 +23,7 @@ class VariantForm extends Component
     public $title = 'Variant';
     public $id, $variantId, $slug, $color, $color_code, $price, $status, $inStock;
     public $sizes = [];
+    public $details = [];
     public $images = [];
     public $newImages = [];
 
@@ -33,7 +35,7 @@ class VariantForm extends Component
     public function mount()
     {
         if ($this->variantId) {
-            $variant = Variant::with('sizes', 'images')->where('id', $this->variantId)->first();
+            $variant = Variant::with('sizes', 'images', 'details')->where('id', $this->variantId)->first();
             $this->slug = $variant->slug;
             $this->color = $variant->color;
             $this->color_code = $variant->color_code;
@@ -49,8 +51,15 @@ class VariantForm extends Component
             })->toArray();
             $this->images = $variant->images->map(function ($image) {
                 return [
-                    'id' => $image->id,
+                    'id' => "$image->id",
                     'url' => $image->image_url
+                ];
+            })->toArray();
+            $this->details = $variant->details->map(function ($detail) {
+                return [
+                    'id' => $detail->id,
+                    'info' => $detail->info,
+                    'image_url' => $detail->image_url,
                 ];
             })->toArray();
         }
@@ -73,8 +82,15 @@ class VariantForm extends Component
         $this->reset('newImages');
     }
 
-    public function removeImage($index)
+    public function removeImage($index, $imageId = '', $variantId = null)
     {
+        if ($imageId !== '' && $variantId !== null) {
+            $image = VariantImage::find($imageId);
+            if ($image && Storage::disk('public')->exists($image->image_url)) {
+                Storage::disk('public')->delete($image->image_url);
+                $image->delete();
+            }
+        }
         unset($this->images[$index]);
         $this->images = array_values($this->images);
     }
@@ -89,10 +105,31 @@ class VariantForm extends Component
         $this->sizes[] = ['size' => '', 'stock' => ''];
     }
 
-    public function removeSize($index)
+    public function removeSize($index, $sizeId = null, $variantId = null)
     {
+        if ($sizeId !== null && $variantId !== null) {
+            VariantSize::find($sizeId)->delete();
+        }
         unset($this->sizes[$index]);
         $this->sizes = array_values($this->sizes);
+    }
+
+    public function addDetail()
+    {
+        $this->details[] = ['info' => '', 'image_url' => ''];
+    }
+
+    public function removeDetail($index, $detailId = null, $variantId = null)
+    {
+        if ($detailId !== null && $variantId !== null) {
+            $detail = VariantDetail::find($detailId);
+            if ($detail && Storage::disk('public')->exists($detail->image_url)) {
+                Storage::disk('public')->delete($detail->image_url);
+                $detail->delete();
+            }
+        }
+        unset($this->details[$index]);
+        $this->details = array_values($this->details);
     }
 
     public function cancel()
@@ -177,6 +214,25 @@ class VariantForm extends Component
                         }
                     }
                 }
+
+                if (isset($this->details)) {
+                    foreach ($this->details as $index => $detail) {
+                        if (
+                            !$detail['image_url'] instanceof \Livewire\Features\SupportFileUploads\TemporaryUploadedFile &&
+                            Storage::disk('public')->exists($detail['image_url'])
+                        ) {
+                            continue;
+                        } else {
+                            $imageName = $filename = $variant->id . '-detail-' . $index . '.' . $detail['image_url']->extension();
+                            $imagePath = $detail['image_url']->storeAs('products/variants/' . $variant->id . '/detail', $imageName, 'public');
+                            VariantDetail::create([
+                                'variant_id' => $variant->id,
+                                'info' => $detail['info'],
+                                'image_url' => $imagePath,
+                            ]);
+                        }
+                    }
+                }
             } else {
                 $variant = Variant::create([
                     'product_id' => $this->id,
@@ -214,6 +270,16 @@ class VariantForm extends Component
                                 'image_url' => $path
                             ]);
                         }
+                    }
+
+                    foreach ($this->details as $index => $detail) {
+                        $imageName = $filename = $variant->id . '-detail-' . $index . '.' . $detail['image_url']->extension();
+                        $imagePath = $detail['image_url']->storeAs('products/variants/' . $variant->id . '/detail', $imageName, 'public');
+                        VariantDetail::create([
+                            'variant_id' => $variant->id,
+                            'info' => $detail['info'],
+                            'image_url' => $imagePath,
+                        ]);
                     }
                 }
             }

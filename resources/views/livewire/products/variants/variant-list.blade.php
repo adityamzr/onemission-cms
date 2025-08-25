@@ -465,9 +465,13 @@
                                             </td>
                                             <td>{{ $item->slug }}</td>
                                             <td>
-                                                @foreach ($item->sizes as $key => $size)
-                                                    {{ $size->size }} = {{ $size->stock }}{{ !$loop->last ? ', ' : '' }}
-                                                @endforeach
+                                                @if ($item->sizes->count() == 0)
+                                                    <span>Empty Stock</span>
+                                                @else
+                                                    @foreach ($item->sizes as $key => $size)
+                                                        {{ $size->size }} = {{ $size->stock }}{{ !$loop->last ? ', ' : '' }}
+                                                    @endforeach
+                                                @endif
                                             </td>
                                             <td>{{ $item->color }}</td>
                                             <td>

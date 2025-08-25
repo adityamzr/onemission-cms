@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VariantImage extends Model
+class VariantDetail extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-
-    public $timestamps = false;
-    public $incrementing = false;
-    protected $keyType = 'string';
+    protected $guarded = ['id'];
 
     public function variant()
     {
