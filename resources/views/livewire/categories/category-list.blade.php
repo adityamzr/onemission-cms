@@ -5,9 +5,14 @@
         <!-- Container -->
         <div class="container-fixed flex items-center justify-between flex-wrap gap-3">
             <div class="flex items-center flex-wrap gap-1 lg:gap-5">
-            <h1 class="font-medium text-lg text-gray-900">
-            {{ $title ?? 'Onemission' }}
-            </h1>
+                <h1 class="font-medium text-lg text-gray-900">
+                {{ $title ?? 'Onemission' }}
+                </h1>
+                <div class="flex items-center gap-1 text-sm">
+                    <a class="text-secondary-foreground hover:text-gray-900" href="{{ route('overview') }}">Home</a>
+                    <span class="text-secondary-foreground text-sm"> / </span>
+                    <span class="text-secondary-foreground hover:text-gray-900">{{ $title }}</span>
+                </div>
             </div>
             <div class="flex items-center flex-wrap gap-1.5 lg:gap-3.5">
                 {{-- <a class="btn btn-sm btn-light" href="html/demo6/account/home/get-started.html">

@@ -8,7 +8,7 @@
     @vite('resources/css/app.scss')
 </head>
 <body>
-    <a wire:navigate href="{{ route('overview') }}" class="text-9xl font-bold text-red-300">Bismillah gaskeun!</a>
+    <a href="{{ route('overview') }}" class="text-9xl font-bold text-red-300">Bismillah gaskeun!</a>
     @vite('resources/js/app.js')
 </body>
 </html>

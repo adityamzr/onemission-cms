@@ -11,6 +11,8 @@ class OutfitImage extends Model
 
     protected $guarded = [];
 
+    public $timestamps = false;
+
     public function outfit()
     {
         return $this->belongsTo(Outfit::class, 'outfit_id');

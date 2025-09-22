@@ -2,6 +2,8 @@
 
 use App\Livewire\Categories\CategoryForm;
 use App\Livewire\Categories\CategoryList;
+use App\Livewire\Outfits\OutfitForm;
+use App\Livewire\Outfits\OutfitList;
 use App\Livewire\Overview;
 use App\Livewire\Products\ProductForm;
 use App\Livewire\Products\ProductList;
@@ -37,3 +39,9 @@ Route::prefix('products')->group(function () {
 Route::get('/categories', CategoryList::class)->name('categories');
 
 Route::get('/tags', TagList::class)->name('tags');
+
+Route::prefix('outfits')->group(function () {
+    Route::get('/', OutfitList::class)->name('outfits');
+    Route::get('/create', OutfitForm::class)->name('outfits.create');
+    Route::get('/{id}/edit', OutfitForm::class)->name('outfits.edit');
+});

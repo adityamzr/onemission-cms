@@ -44,7 +44,7 @@ class CategoryForm extends Component
             $existingCategory = Category::where('name', $this->name)->first();
             if ($existingCategory && $existingCategory->id !== $this->categoryId) {
                 session()->flash('error', 'Category with this name already exists.');
-                return $this->redirect('/categories', navigate: true);
+                return $this->redirect('/categories');
             }
 
             if ($this->categoryId) {
@@ -60,7 +60,7 @@ class CategoryForm extends Component
             $this->dispatch('hideModal');
             $this->reset(['name', 'categoryId']);
             session()->flash('success', $message);
-            return $this->redirect('/categories', navigate: true);
+            return $this->redirect('/categories');
         } catch (\Exception $th) {
             session()->flash('error', 'An error occurred while saving the category: ' . $th->getMessage());
         }
@@ -76,7 +76,7 @@ class CategoryForm extends Component
             } else {
                 session()->flash('error', 'Category not found.');
             }
-            return $this->redirect('/categories', navigate: true);
+            return $this->redirect('/categories');
         } catch (\Exception $th) {
             session()->flash('error', 'An error occurred while deleting the category: ' . $th->getMessage());
         }

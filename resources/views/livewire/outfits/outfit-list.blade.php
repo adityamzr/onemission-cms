@@ -20,11 +20,11 @@
                     </i>
                     Export
                 </a> --}}
-                <button type="button" wire:click="$dispatchTo('tags.tag-form', 'openModal')" class="btn btn-dark">
+                <a href="{{ route('outfits.create') }}" class="btn btn-dark">
                     <i class="ki-filled ki-plus-squared">
                     </i>
-                    Add Tag
-                </button>
+                    Add Outfit
+                </a>
             </div>
         </div>
         <!-- End of Container -->
@@ -60,19 +60,37 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[250px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[100px]" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
-                                                    Name
+                                                    Thumbnail
                                                     </span>
                                                     <span class="sort-icon">
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[250px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[200px]" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
-                                                    Info
+                                                    Model Name
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[100px]" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Model Height
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[100px]" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Model Size
                                                     </span>
                                                     <span class="sort-icon">
                                                     </span>
@@ -81,7 +99,7 @@
                                             <th class="min-w-[100px]" data-datatable-column="lastSession">
                                                 <span class="sort">
                                                     <span class="sort-label">
-                                                    Created At
+                                                    Show/Hide
                                                     </span>
                                                     <span class="sort-icon">
                                                     </span>
@@ -97,19 +115,33 @@
                                                 </span>
                                             </th>
                                         </tr>
-                                        @foreach ($tags as $key => $item)
+                                        @foreach ($outfits as $key => $item)
+                                        {{-- @dd($item) --}}
                                         <tr>
-                                            <td class="text-center">{{ $tags->firstItem() + $key }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->info }}</td>
-                                            <td>{{ $item->created_at }}</td>
-                                            <td class="flex items-center gap-2">
-                                                <button type="button"  wire:click="$dispatchTo('tags.tag-form', 'openModal', { id: {{ $item->id }} })" class="btn btn-warning btn-sm">
+                                            <td class="text-center">{{ $outfits->firstItem() + $key }}</td>
+                                            <td class="flex items-center justify-center">
+                                                <div class="flex items-center justify-center relative w-fit h-[120px] mb-4 rounded-lg bg-white shadow-none">
+                                                    <img src="{{ asset('storage/'.$item->images[0]->url) }}" class="h-[120px] shrink-0 cursor-pointer" alt="">
+                                                </div>
+                                            </td>
+                                            <td>{{ $item->model_name }}</td>
+                                            <td>{{ $item->model_height }}</td>
+                                            <td>{{ $item->model_size }}</td>
+                                            <td>
+                                                <div class="flex items-center gap-2.5">
+                                                    <div class="switch switch-sm">
+                                                        <label class="switch-label" for="status">{{ $item->is_shown ? 'Shown' : 'Hidden' }}</label>
+                                                        <input wire:click="updateStatus({{ $item->id }})" type="checkbox" @if ($item->is_shown) checked @endif />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center space-y-2">
+                                                <a href="{{ route('outfits.edit', [$item->id]) }}" class="btn btn-warning btn-sm">
                                                     <i class="ki-filled ki-pencil">
                                                     </i>
                                                     Edit
-                                                </button>
-                                                <button type="button" wire:confirm="Are you sure you want to delete this data?" wire:click="$dispatchTo('tags.tag-form', 'destroy', { id: {{ $item->id }} })" class="btn btn-danger btn-sm">
+                                                </a>
+                                                <button wire:click="delete('{{ $item->id }}')" wire:confirm="Are you sure you want to delete this data?" type="button" class="btn btn-danger btn-sm">
                                                     <i class="ki-filled ki-trash">
                                                     </i>
                                                     Delete
@@ -137,7 +169,7 @@
                                     <div class="pagination" data-datatable-pagination="true">
                                     </div>
                                 </div>
-                                {{ $tags->links('vendor.livewire.tailwind') }}
+                                {{ $outfits->links('vendor.livewire.tailwind') }}
                             </div>
                         </div>
                     </div>
@@ -146,6 +178,5 @@
             {{-- end: table --}}
         </div>
         <!-- End of Container -->
-        @livewire('tags.tag-form')
     </main>
 </div>

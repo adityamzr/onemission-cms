@@ -10,7 +10,7 @@
                         {{ $title }}
                     </h1>
                     <div class="flex items-center gap-1 text-sm">
-                        <a wire:navigate class="text-secondary-foreground hover:text-gray-900" href="{{ route('overview') }}">Home</a>
+                        <a class="text-secondary-foreground hover:text-gray-900" href="{{ route('overview') }}">Home</a>
                         <span class="text-secondary-foreground text-sm"> / </span>
                         <span class="text-secondary-foreground hover:text-gray-900">{{ $title }}</span>
                     </div>
@@ -21,7 +21,7 @@
                         </i>
                         Export
                     </a> --}}
-                    <a href="{{ route('products.create') }}" type="button" wire:navigate  class="btn btn-dark">
+                    <a href="{{ route('products.create') }}" type="button" class="btn btn-dark">
                         <i class="ki-filled ki-plus-squared">
                         </i>
                         Add Product
@@ -39,49 +39,6 @@
                 </i>
                 <input placeholder="Search {{ $title }}" type="text" wire:model.live.debounce.500ms="search"/>
             </div>
-            <div class="menu menu-default" data-menu="true">
-                <div class="menu-item" data-menu-item-offset="0, 0" data-menu-item-placement="bottom-end" data-menu-item-toggle="dropdown" data-menu-item-trigger="hover">
-                    <button class="menu-toggle btn btn-light btn-sm flex-nowrap">
-                    <span class="flex items-center me-1">
-                    <i class="ki-filled ki-calendar !text-md">
-                    </i>
-                    </span>
-                    <span class="hidden md:inline text-nowrap">
-                    September, 2024
-                    </span>
-                    <span class="inline md:hidden text-nowrap">
-                    Sep, 2024
-                    </span>
-                    <span class="flex items-center lg:ms-4">
-                    <i class="ki-filled ki-down !text-xs">
-                    </i>
-                    </span>
-                    </button>
-                    <div class="menu-dropdown w-48 py-2 scrollable-y max-h-[250px]">
-                    <div class="menu-item">
-                    <a class="menu-link" href="#">
-                    <span class="menu-title">
-                        January, 2024
-                    </span>
-                    </a>
-                    </div>
-                    <div class="menu-item">
-                    <a class="menu-link" href="#">
-                    <span class="menu-title">
-                        February, 2024
-                    </span>
-                    </a>
-                    </div>
-                    <div class="menu-item active">
-                    <a class="menu-link" href="#">
-                    <span class="menu-title">
-                        March, 2024
-                    </span>
-                    </a>
-                    </div>
-                    </div>
-                </div>
-                </div>
             <div class="btn-tabs" data-tabs="true">
                 <a class="btn btn-icon active" data-tab-toggle="#projects_cards">
                     <i class="ki-filled ki-category">
@@ -114,7 +71,7 @@
                  <div class="flex items-center justify-center relative w-full h-[180px] mb-4 rounded-lg bg-gray-200 border border-gray-300 shadow-none">
                      <img src="{{ asset('storage/'.$item->image) }}" class="h-[180px] shrink-0 cursor-pointer" alt="">
                  </div>
-                 <a href="/products/{{ $item->id }}/show" wire:navigate class="hover:text-primary text-sm font-bold text-mono px-1 leading-5.5 block">{{ $item->name }}</a>
+                 <a href="/products/{{ $item->id }}/show" class="hover:text-primary text-sm font-bold text-mono px-1 leading-5.5 block">{{ $item->name }}</a>
                  <span class="badge badge-warning badge-sm rounded-full gap-1 my-2">
                      <i class="ki-solid ki-star text-white -mt-0.5"></i>
                      5.0
@@ -149,7 +106,7 @@
                          </button>
                          <div class="dropdown-content menu-default w-full max-w-36">
                              <div class="menu-item" data-dropdown-dismiss="true">
-                                 <a href="/products/{{ $item->id }}/edit" wire:navigate class="menu-link">
+                                 <a href="/products/{{ $item->id }}/edit" class="menu-link">
                                      <span class="menu-icon">
                                          <i class="ki-filled ki-pencil">
                                          </i>
@@ -195,7 +152,7 @@
                     <img alt="" class="h-[70px] cursor-pointer" src="{{ asset('storage/'.$item->image) }}"/>
                     </div>
                     <div class="flex flex-col gap-2">
-                    <a href="/products/{{ $item->id }}/show" wire:navigate class="text-sm font-media/brand font-bold text-gray-900 hover:text-primary-active mb-px">
+                    <a href="/products/{{ $item->id }}/show" class="text-sm font-media/brand font-bold text-gray-900 hover:text-primary-active mb-px">
                     {{ $item->name }}
                     </a>
                     <div class="flex flex-wrap items-center gap-3">
@@ -239,7 +196,7 @@
                         </button>
                         <div class="menu-dropdown menu-default w-full max-w-36" data-menu-dismiss="true">
                         <div class="menu-item">
-                        <a href="/products/{{ $item->id }}/edit" wire:navigate class="menu-link">
+                        <a href="/products/{{ $item->id }}/edit" class="menu-link">
                         <span class="menu-icon">
                             <i class="ki-filled ki-pencil">
                             </i>

@@ -46,7 +46,7 @@ class TagForm extends Component
             $existingTag = Tag::where('name', $this->name)->first();
             if ($existingTag && $existingTag->id !== $this->tagId) {
                 session()->flash('error', 'Tag with this name already exists.');
-                return $this->redirect('/tags', navigate: true);
+                return $this->redirect('/tags');
             }
 
             if ($this->tagId) {
@@ -63,7 +63,7 @@ class TagForm extends Component
             $this->dispatch('hideModal');
             $this->reset(['name', 'tagId']);
             session()->flash('success', $message);
-            return $this->redirect('/tags', navigate: true);
+            return $this->redirect('/tags');
         } catch (\Exception $th) {
             session()->flash('error', 'An error occurred while saving the tag: ' . $th->getMessage());
         }
@@ -79,7 +79,7 @@ class TagForm extends Component
             } else {
                 session()->flash('error', 'Tag not found.');
             }
-            return $this->redirect('/tags', navigate: true);
+            return $this->redirect('/tags');
         } catch (\Exception $th) {
             session()->flash('error', 'An error occurred while deleting the tag: ' . $th->getMessage());
         }

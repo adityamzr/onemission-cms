@@ -97,9 +97,11 @@
                                             </div>
                                             @endif
                                             <div class="flex items-center gap-1.5 shrink-0">
+                                                @if (!empty($images))
                                                 <button wire:click="resetImages" type="button" class="btn btn-danger btn-clear">
                                                 Reset
                                                 </button>
+                                                @endif
                                                 <input type="file" id="upload" wire:model="newImages" class="hidden" accept=".jpg,.jpeg,.png,.webp,.aviff" multiple>
                                                 <label for="upload">
                                                     <button type="button" class="btn btn-dark btnUpload">
@@ -158,7 +160,7 @@
                                         @php
                                             $itemId = is_array($item) ? ($item['id'] ?? null) : ($item->id ?? null);
                                         @endphp
-                                        @if ($variantId)
+                                        @if ($itemId)
                                         <i wire:click="removeSize({{ $index }}, {{ $itemId }}, '{{ @$variantId }}')" wire:confirm="Are you sure you want to remove this item?" class="ki-outline ki-trash text-danger text-2xl cursor-pointer"></i>
                                         @else
                                         <i wire:click="removeSize({{ $index }})" class="ki-outline ki-trash text-danger text-2xl cursor-pointer"></i>
@@ -195,7 +197,7 @@
                                         @php
                                             $itemId = is_array($item) ? ($item['id'] ?? null) : ($item->id ?? null);
                                         @endphp
-                                        @if ($variantId)
+                                        @if ($itemId)
                                         <i wire:click="removeDetail({{ $index }}, {{ $itemId }}, '{{ @$variantId }}')" wire:confirm="Are you sure you want to remove this item?" class="ki-outline ki-trash text-danger text-2xl cursor-pointer"></i>
                                         @else
                                         <i wire:click="removeDetail({{ $index }})" class="ki-outline ki-trash text-danger text-2xl cursor-pointer"></i>

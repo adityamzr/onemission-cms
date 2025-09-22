@@ -9,9 +9,9 @@
                     {{ $title ?? 'Onemission' }} {{ $subtitle ?? '' }}
                     </h1>
                     <div class="flex items-center gap-1 text-sm">
-                        <a wire:navigate class="text-secondary-foreground hover:text-gray-900" href="{{ route('overview') }}">Home</a>
+                        <a class="text-secondary-foreground hover:text-gray-900" href="{{ route('overview') }}">Home</a>
                         <span class="text-secondary-foreground text-sm"> / </span>
-                        <a wire:navigate class="text-secondary-foreground hover:text-gray-900" href="{{ route('products') }}">{{ $title }}s</a>
+                        <a class="text-secondary-foreground hover:text-gray-900" href="{{ route('products') }}">{{ $title }}s</a>
                         <span class="text-secondary-foreground text-sm"> / </span>
                         <span class="text-secondary-foreground hover:text-gray-900">{{ $subtitle }}</span>
                     </div>
@@ -42,7 +42,7 @@
                         <span class="text-sm badge badge-outline {{ $product->is_active ? 'badge-success' : 'badge-danger' }}">
                             {{ $product->is_active ? 'Published' : 'Unpublished' }}
                         </span>
-                        <a href="/products/{{ $product->id }}/edit" wire:navigate class="btn btn-dark">
+                        <a href="/products/{{ $product->id }}/edit" class="btn btn-dark">
                             <span class="menu-icon">
                                 <i class="ki-filled ki-pencil">
                                 </i>
@@ -360,7 +360,7 @@
                                 </i>
                                 <input placeholder="Search {{ $title.' '.$subtitle }}" type="text" wire:model.live.debounce.500ms="search"/>
                             </div>
-                            <a href="{{ route('variants.create', $id) }}" wire:navigate class="btn btn-dark">
+                            <a href="{{ route('variants.create', $id) }}" class="btn btn-dark">
                                 <span class="menu-icon">
                                     <i class="ki-filled ki-plus">
                                     </i>
@@ -484,7 +484,7 @@
                                                 <div class="badge {{ $item->in_stock ? 'badge-success' : 'badge-danger' }} rounded-md">{{ $item->in_stock ? 'Ready Stock' : 'Empty Stock' }}</div>
                                             </td>
                                             <td class="text-center space-y-2">
-                                                <a wire:navigate href="{{ route('variants.edit', [$id, $item->id]) }}" class="btn btn-warning btn-sm">
+                                                <a href="{{ route('variants.edit', [$id, $item->id]) }}" class="btn btn-warning btn-sm">
                                                     <i class="ki-filled ki-pencil">
                                                     </i>
                                                     Edit

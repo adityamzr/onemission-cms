@@ -59,6 +59,6 @@ class ProductList extends Component
         } else {
             session()->flash('error', 'Product not found.');
         }
-        return $this->redirect('/products', navigate: true);
+        return $this->redirect('/products');
     }
 }

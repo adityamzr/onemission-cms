@@ -15,4 +15,9 @@ class Outfit extends Model
     {
         return $this->hasMany(OutfitImage::class, 'outfit_id');
     }
+
+    public function variants()
+    {
+        return $this->belongsToMany(Variant::class, 'outfit_variants', 'outfit_id', 'variant_id');
+    }
 }
