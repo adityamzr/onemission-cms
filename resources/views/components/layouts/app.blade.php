@@ -148,7 +148,7 @@
             </span>
             </a>
           </div>
-         <div class="menu-item">
+         {{-- <div class="menu-item">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('outfits') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
             <i class="ki-filled ki-abstract-26">
@@ -158,7 +158,7 @@
             Returns & Refunds
            </span>
           </a>
-         </div>
+         </div> --}}
          <div class="menu-item">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('categories') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
@@ -305,7 +305,7 @@
           </a>
          </div>
          <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
+          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('galleries') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
             <i class="ki-filled ki-abstract-26">
             </i>

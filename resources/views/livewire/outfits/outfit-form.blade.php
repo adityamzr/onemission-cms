@@ -97,9 +97,11 @@
                                             </div>
                                             @endif
                                             <div class="flex items-center gap-1.5 shrink-0">
+                                                @if ($id)
                                                 <button wire:click="resetImages" type="button" class="btn btn-danger btn-clear">
                                                 Reset
                                                 </button>
+                                                @endif
                                                 <input type="file" id="upload" wire:model="newImages" class="hidden" accept=".jpg,.jpeg,.png,.webp,.aviff" multiple>
                                                 <label for="upload">
                                                     <button type="button" class="btn btn-dark btnUpload">

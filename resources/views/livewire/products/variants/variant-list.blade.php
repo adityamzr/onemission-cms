@@ -37,7 +37,7 @@
                     </h3>
                     <div class="flex items-center gap-3">
                         <label class="switch switch-sm">
-                            <input wire:click="publish" type="checkbox" @if($product->is_active) checked @endif/>
+                            <input wire:click="publish" wire:confirm="Are you sure you want to {{ $product->is_active ? 'Unpublish' : 'Publish' }} this data?" type="checkbox" @if($product->is_active) checked @endif/>
                         </label>
                         <span class="text-sm badge badge-outline {{ $product->is_active ? 'badge-success' : 'badge-danger' }}">
                             {{ $product->is_active ? 'Published' : 'Unpublished' }}

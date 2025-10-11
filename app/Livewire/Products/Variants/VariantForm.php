@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Products\Variants;
 
+use App\Models\OutfitVariants;
 use App\Models\Product;
 use App\Models\Variant;
 use App\Models\VariantDetail;
@@ -21,7 +22,7 @@ class VariantForm extends Component
     use WithFileUploads;
 
     public $title = 'Variant';
-    public $id, $variantId, $slug, $color, $color_code, $price, $status, $inStock;
+    public $id, $variantId, $slug, $color, $color_code, $price, $status, $inStock, $isOutfit = false, $outfits, $selectedOutfit = null;
     public $sizes = [];
     public $details = [];
     public $images = [];
@@ -29,14 +30,33 @@ class VariantForm extends Component
 
     public function render()
     {
+
         return view('livewire.products.variants.variant-form');
     }
+
+    public function selectOutfit($outfitId)
+    {
+        if ($this->selectedOutfit == $outfitId) {
+            $this->selectedOutfit = null;
+            return;
+        }
+        $this->selectedOutfit = $outfitId;
+    }
+
+    // public function toggleIsOutfit()
+    // {
+    //     $this->isOutfit = !$this->isOutfit;
+    //     if ($this->isOutfit) {
+    //         $this->outfits = OutfitVariants::with('outfit.images')->where('variant_id', $this->variantId)->get();
+    //     }
+    // }
 
     public function mount()
     {
         if ($this->variantId) {
             $variant = Variant::with('sizes', 'images', 'details')->where('id', $this->variantId)->first();
             $this->slug = $variant->slug;
+            $this->selectedOutfit = $variant->outfit_id;
             $this->color = $variant->color;
             $this->color_code = $variant->color_code;
             $this->price = $variant->price;
@@ -62,6 +82,7 @@ class VariantForm extends Component
                     'image_url' => $detail->image_url,
                 ];
             })->toArray();
+            $this->outfits = OutfitVariants::with('outfit.images')->where('variant_id', $this->variantId)->get();
         }
     }
 
@@ -169,7 +190,7 @@ class VariantForm extends Component
                 $variant = Variant::findOrFail($this->variantId);
                 $variant->fill([
                     'product_id' => $this->id,
-                    'outfit_id' => null,
+                    'outfit_id' => $this->selectedOutfit ?? null,
                     'slug' => $this->slug,
                     'color' => $this->color,
                     'color_code' => $this->color_code,

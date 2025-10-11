@@ -151,6 +151,52 @@
                                         @error('status') <span class="text-xs text-red-400">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
+                                @if ($variantId)
+                                <div class="flex w-full">
+                                    {{-- <label class="form-label flex items-center gap-2.5 text-nowrap">
+                                    <input wire:click="toggleIsOutfit" class="checkbox cursor-pointer" type="checkbox"/>
+                                    Link an Outfit (optional)
+                                    </label> --}}
+                                    <label class="form-label flex items-center gap-2.5 text-nowrap">
+                                    Choose an Outfit (optional)
+                                    </label>
+                                </div>
+                                <div class="card rounded-xl">
+                                    <div class="flex items-center flex-wrap md:flex-nowrap justify-between grow gap-5 p-5 rtl:bg-[center_left_-8rem] bg-[center_right_-8rem] bg-no-repeat bg-[length:700px]">
+                                        <div class="flex items-center gap-4 overflow-x-auto">
+                                            <div class="flex items-center flex-wrap sm:flex-nowrap gap-4 mb-2 cursor-pointer">
+                                                @if (!empty($outfits))
+                                                    @foreach ($outfits as $index => $item)
+                                                    <div wire:click="selectOutfit({{ $item->outfit_id }})" class="flex items-center justify-center size-[115px] rounded-lg bg-gray-200 {{ $selectedOutfit == $item->outfit_id ? 'border-blue-500 border-2' : 'border-gray-300 border' }} shadow-none">
+                                                        <img src="{{ asset('storage/' . $item->outfit->images[0]->url) }}" class="h-full" alt="">
+                                                    </div>
+                                                    @endforeach
+                                                @else
+                                                <div class="flex flex-col gap-2">
+                                                    <div class="flex items-center flex-wrap sm:flex-nowrap gap-2.5">
+                                                        <span class="text-base font-medium text-gray-900 hover:text-primary-active">
+                                                            No Linked Outfits
+                                                        </span>
+                                                    </div>
+                                                    <div class="text-2sm text-gray-700">
+                                                    Link an outfit first on the Outfit menu to display here.
+                                                    <br/>
+                                                    <a href="{{ route('outfits') }}" class="text-blue-500 underline">Go to the outfit</a>
+                                                    <br/>
+                                                    @error('newImages.*')
+                                                        <p class="text-red-500 text-2sm">Error Upload: {{ $message }}</p>
+                                                    @enderror
+                                                    </div>
+                                                </div>
+                                                @endif
+                                            </div>
+                                            @error('newImages.*')
+                                                <p class="text-red-500 text-2sm">Error Upload: {{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
                             <div class="px-10 mb-10 space-y-5">
                                 @foreach ($sizes as $index => $item)
