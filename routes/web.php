@@ -36,14 +36,14 @@ Route::prefix('products')->group(function () {
     Route::get('/{id}/variants/{variantId}/edit', VariantForm::class)->name('variants.edit');
 });
 
-Route::get('/categories', CategoryList::class)->name('categories');
-Route::get('/tags', TagList::class)->name('tags');
-
-Route::get('/banners', BannerList::class)->name('banners');
-Route::get('/galleries', GalleryList::class)->name('galleries');
-
 Route::prefix('outfits')->group(function () {
     Route::get('/', OutfitList::class)->name('outfits');
     Route::get('/create', OutfitForm::class)->name('outfits.create');
     Route::get('/{id}/edit', OutfitForm::class)->name('outfits.edit');
 });
+
+Route::get('/categories', CategoryList::class)->name('categories');
+Route::get('/tags', TagList::class)->name('tags');
+
+Route::get('/banners', BannerList::class)->name('banners');
+Route::get('/galleries', GalleryList::class)->name('galleries');

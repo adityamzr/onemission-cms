@@ -105,7 +105,7 @@
      <div class="scrollable-y-auto light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] grow" data-scrollable="true" data-scrollable-dependencies="#sidebar_header, #sidebar_footer" data-scrollable-height="auto" data-scrollable-offset="0px" data-scrollable-wrappers="#sidebar_menu">
       <!-- Primary Menu -->
       <div class="menu flex flex-col w-full gap-1.5 px-3.5" data-menu="true" data-menu-accordion-expand-all="false" id="sidebar_primary_menu">
-       <div class="menu-item">
+       <div class="menu-item {{ request()->routeIs('overview') ? 'active' : '' }}">
         <a class="menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('overview') }}">
          <span class="menu-icon items-start text-lg text-gray-600 menu-item-active:text-gray-800 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-active:text-gray-900 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
           <i class="ki-filled ki-home-3">
@@ -174,6 +174,48 @@
        </div>
        <div class="border-b border-gray-300 mt-2 mb-1 mx-1.5">
        </div>
+       
+       <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+        <div class="menu-label flex items-center justify-between">
+         <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
+          <span class="menu-arrow me-2.5">
+           <i class="ki-filled ki-right text-sm menu-item-show:hidden text-gray-500">
+           </i>
+           <i class="ki-filled ki-down text-sm hidden menu-item-show:inline-flex text-gray-500">
+           </i>
+          </span>
+          <span class="menu-title text-sm text-gray-800 font-medium">
+           Transactions
+          </span>
+         </div>
+        </div>
+        <div class="menu-accordion">
+        <div class="menu-item active">
+          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
+           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
+            <i class="ki-filled ki-dollar">
+            </i>
+           </span>
+           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
+            Payments
+           </span>
+          </a>
+         </div>
+         <div class="menu-item">
+          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
+           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
+            <i class="ki-filled ki-financial-schedule">
+            </i>
+           </span>
+           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
+            Financial Reports
+           </span>
+          </a>
+         </div>
+        </div>
+       </div>
+       <div class="border-b border-gray-300 mt-2 mb-1 mx-1.5">
+       </div>
         <div class="menu-item {{ request()->routeIs('products') || request()->routeIs('outfits') || request()->routeIs('categories') || request()->routeIs('tags') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-label flex items-center justify-between">
          <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
@@ -230,47 +272,6 @@
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
             Tags
-           </span>
-          </a>
-         </div>
-        </div>
-       </div>
-       <div class="border-b border-gray-300 mt-2 mb-1 mx-1.5">
-       </div>
-       <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
-        <div class="menu-label flex items-center justify-between">
-         <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
-          <span class="menu-arrow me-2.5">
-           <i class="ki-filled ki-right text-sm menu-item-show:hidden text-gray-500">
-           </i>
-           <i class="ki-filled ki-down text-sm hidden menu-item-show:inline-flex text-gray-500">
-           </i>
-          </span>
-          <span class="menu-title text-sm text-gray-800 font-medium">
-           Payment
-          </span>
-         </div>
-        </div>
-        <div class="menu-accordion">
-        <div class="menu-item active">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
-           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-dollar">
-            </i>
-           </span>
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Transactions
-           </span>
-          </a>
-         </div>
-         <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
-           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-financial-schedule">
-            </i>
-           </span>
-           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Financial Reports
            </span>
           </a>
          </div>
