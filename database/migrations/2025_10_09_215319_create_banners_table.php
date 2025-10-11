@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('url');
             $table->boolean('is_active')->default(false);
+            $table->boolean('is_primary')->default(false);
             $table->timestamps();
         });
     }

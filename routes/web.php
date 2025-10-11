@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Banner\BannerList;
 use App\Livewire\Categories\CategoryForm;
 use App\Livewire\Categories\CategoryList;
 use App\Livewire\Galleries\GalleryList;
@@ -35,12 +36,10 @@ Route::prefix('products')->group(function () {
     Route::get('/{id}/variants/{variantId}/edit', VariantForm::class)->name('variants.edit');
 });
 
-// Route::get('')
-
 Route::get('/categories', CategoryList::class)->name('categories');
-
 Route::get('/tags', TagList::class)->name('tags');
 
+Route::get('/banners', BannerList::class)->name('banners');
 Route::get('/galleries', GalleryList::class)->name('galleries');
 
 Route::prefix('outfits')->group(function () {

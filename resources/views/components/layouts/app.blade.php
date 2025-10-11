@@ -140,7 +140,7 @@
           <div class="menu-item active">
             <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('products') }}">
             <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-              <i class="ki-filled ki-abstract-26">
+              <i class="ki-filled ki-shop">
               </i>
             </span>
             <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -162,7 +162,7 @@
          <div class="menu-item">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('categories') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-badge">
+            <i class="ki-filled ki-cheque">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -174,7 +174,7 @@
        </div>
        <div class="border-b border-gray-300 mt-2 mb-1 mx-1.5">
        </div>
-        <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+        <div class="menu-item {{ request()->routeIs('products') || request()->routeIs('outfits') || request()->routeIs('categories') || request()->routeIs('tags') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-label flex items-center justify-between">
          <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
           <span class="menu-arrow me-2.5">
@@ -189,10 +189,10 @@
          </div>
         </div>
         <div class="menu-accordion">
-          <div class="menu-item active">
+          <div class="menu-item {{ request()->routeIs('products') ? 'active' : '' }}">
             <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('products') }}">
             <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-              <i class="ki-filled ki-abstract-26">
+              <i class="ki-filled ki-purchase">
               </i>
             </span>
             <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -200,10 +200,10 @@
             </span>
             </a>
           </div>
-         <div class="menu-item">
+         <div class="menu-item {{ request()->routeIs('outfits') ? 'active' : '' }}">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('outfits') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-26">
+            <i class="ki-filled ki-user-tick">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -211,10 +211,10 @@
            </span>
           </a>
          </div>
-         <div class="menu-item">
+         <div class="menu-item {{ request()->routeIs('categories') ? 'active' : '' }}">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('categories') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-badge">
+            <i class="ki-filled ki-category">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -222,10 +222,10 @@
            </span>
           </a>
          </div>
-         <div class="menu-item">
+         <div class="menu-item {{ request()->routeIs('tags') ? 'active' : '' }}">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('tags') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-cheque">
+            <i class="ki-filled ki-price-tag">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -255,7 +255,7 @@
         <div class="menu-item active">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-26">
+            <i class="ki-filled ki-dollar">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -266,7 +266,7 @@
          <div class="menu-item">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-26">
+            <i class="ki-filled ki-financial-schedule">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -278,7 +278,7 @@
        </div>
        <div class="border-b border-gray-300 mt-2 mb-1 mx-1.5">
        </div>
-       <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+       <div class="menu-item {{ request()->routeIs('banners') || request()->routeIs('galleries') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-label flex items-center justify-between">
          <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
           <span class="menu-arrow me-2.5">
@@ -293,10 +293,10 @@
          </div>
         </div>
         <div class="menu-accordion">
-        <div class="menu-item active">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
+        <div class="menu-item {{ request()->routeIs('banners') ? 'active' : '' }}">
+          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('banners') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-26">
+            <i class="ki-filled ki-colors-square">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -304,10 +304,10 @@
            </span>
           </a>
          </div>
-         <div class="menu-item">
+         <div class="menu-item {{ request()->routeIs('galleries') ? 'active' : '' }}">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('galleries') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-26">
+            <i class="ki-filled ki-picture">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -318,7 +318,7 @@
          <div class="menu-item">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-26">
+            <i class="ki-filled ki-dropbox">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
@@ -329,7 +329,7 @@
          <div class="menu-item">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-26">
+            <i class="ki-filled ki-two-credit-cart">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
