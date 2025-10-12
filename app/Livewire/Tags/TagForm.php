@@ -66,6 +66,7 @@ class TagForm extends Component
             return $this->redirect('/tags');
         } catch (\Exception $th) {
             session()->flash('error', 'An error occurred while saving the tag: ' . $th->getMessage());
+            return $this->redirect('/tags');
         }
     }
 
@@ -82,6 +83,7 @@ class TagForm extends Component
             return $this->redirect('/tags');
         } catch (\Exception $th) {
             session()->flash('error', 'An error occurred while deleting the tag: ' . $th->getMessage());
+            return $this->redirect('/tags');
         }
     }
 }

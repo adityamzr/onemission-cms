@@ -63,6 +63,7 @@ class CategoryForm extends Component
             return $this->redirect('/categories');
         } catch (\Exception $th) {
             session()->flash('error', 'An error occurred while saving the category: ' . $th->getMessage());
+            return $this->redirect('/categories');
         }
     }
 
@@ -79,6 +80,7 @@ class CategoryForm extends Component
             return $this->redirect('/categories');
         } catch (\Exception $th) {
             session()->flash('error', 'An error occurred while deleting the category: ' . $th->getMessage());
+            return $this->redirect('/categories');
         }
     }
 }

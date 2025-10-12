@@ -3,6 +3,7 @@
 use App\Livewire\Banner\BannerList;
 use App\Livewire\Categories\CategoryForm;
 use App\Livewire\Categories\CategoryList;
+use App\Livewire\Discounts\DiscountList;
 use App\Livewire\Galleries\GalleryList;
 use App\Livewire\Outfits\OutfitForm;
 use App\Livewire\Outfits\OutfitList;
@@ -44,6 +45,7 @@ Route::prefix('outfits')->group(function () {
 
 Route::get('/categories', CategoryList::class)->name('categories');
 Route::get('/tags', TagList::class)->name('tags');
+Route::get('/discounts', DiscountList::class)->name('discounts');
 
 Route::get('/banners', BannerList::class)->name('banners');
 Route::get('/galleries', GalleryList::class)->name('galleries');

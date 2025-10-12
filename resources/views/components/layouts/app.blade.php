@@ -216,7 +216,7 @@
        </div>
        <div class="border-b border-gray-300 mt-2 mb-1 mx-1.5">
        </div>
-        <div class="menu-item {{ request()->routeIs('products') || request()->routeIs('outfits') || request()->routeIs('categories') || request()->routeIs('tags') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+        <div class="menu-item {{ request()->routeIs('products') || request()->routeIs('outfits') || request()->routeIs('categories') || request()->routeIs('tags') || request()->routeIs('discounts') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-label flex items-center justify-between">
          <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
           <span class="menu-arrow me-2.5">
@@ -275,6 +275,17 @@
            </span>
           </a>
          </div>
+         <div class="menu-item {{ request()->routeIs('discounts') ? 'active' : '' }}">
+          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('discounts') }}">
+           <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
+            <i class="ki-filled ki-discount">
+            </i>
+           </span>
+           <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
+            Discounts
+           </span>
+          </a>
+         </div>
         </div>
        </div>
        <div class="border-b border-gray-300 mt-2 mb-1 mx-1.5">
@@ -289,7 +300,7 @@
            </i>
           </span>
           <span class="menu-title text-sm text-gray-800 font-medium">
-           System Configuration
+           Configuration
           </span>
          </div>
         </div>
