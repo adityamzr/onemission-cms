@@ -1,10 +1,13 @@
 <?php
 
 use App\Livewire\Banner\BannerList;
-use App\Livewire\Categories\CategoryForm;
 use App\Livewire\Categories\CategoryList;
 use App\Livewire\Discounts\DiscountList;
 use App\Livewire\Galleries\GalleryList;
+use App\Livewire\Orders\CancelList;
+use App\Livewire\Orders\OrderDetail;
+use App\Livewire\Orders\OrderHistory;
+use App\Livewire\Orders\OrderList;
 use App\Livewire\Outfits\OutfitForm;
 use App\Livewire\Outfits\OutfitList;
 use App\Livewire\Overview;
@@ -27,6 +30,13 @@ Route::get('/overview', Overview::class)->name('overview');
 //     })->name('dashboard');
 
 // });
+
+Route::prefix('/orders')->group(function () {
+    Route::get('/', OrderList::class)->name('orders');
+    Route::get('/{id}/show', OrderDetail::class)->name('orders.show');
+    Route::get('/cancel', CancelList::class)->name('orders.cancel');
+    Route::get('/history', OrderHistory::class)->name('orders.history');
+});
 
 Route::prefix('products')->group(function () {
     Route::get('/', ProductList::class)->name('products');

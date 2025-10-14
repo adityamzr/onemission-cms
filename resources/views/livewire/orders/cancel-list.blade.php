@@ -14,18 +14,18 @@
                     <span class="text-secondary-foreground hover:text-gray-900">{{ $title }}</span>
                 </div>
             </div>
-            <div class="flex items-center flex-wrap gap-1.5 lg:gap-3.5">
-                {{-- <a class="btn btn-sm btn-light" href="html/demo6/account/home/get-started.html">
+            {{-- <div class="flex items-center flex-wrap gap-1.5 lg:gap-3.5">
+                <a class="btn btn-sm btn-light" href="html/demo6/account/home/get-started.html">
                     <i class="ki-filled ki-exit-down !text-base">
                     </i>
                     Export
-                </a> --}}
-                <a href="{{ route('outfits.create') }}" class="btn btn-dark">
+                </a>
+                <button type="button" wire:click="$dispatchTo('orders.order-form', 'openModal')" class="btn btn-dark">
                     <i class="ki-filled ki-plus-squared">
                     </i>
-                    Add Outfit
-                </a>
-            </div>
+                    Add order
+                </button>
+            </div> --}}
         </div>
         <!-- End of Container -->
         </div>
@@ -60,10 +60,10 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[100px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[200px]" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
-                                                    Thumbnail
+                                                    Order Number
                                                     </span>
                                                     <span class="sort-icon">
                                                     </span>
@@ -72,34 +72,97 @@
                                             <th class="min-w-[200px]" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
-                                                    Model Name
+                                                    Name
                                                     </span>
                                                     <span class="sort-icon">
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[100px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[200px]" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
-                                                    Model Height
+                                                    Email
                                                     </span>
                                                     <span class="sort-icon">
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[100px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
-                                                    Model Size
+                                                    Phone
                                                     </span>
                                                     <span class="sort-icon">
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[100px]" data-datatable-column="lastSession">
+                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
-                                                    Show/Hide
+                                                    Order Items
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[180px]" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Shipping Provider
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Shipping Cost
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Discount
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Subtotal
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Total
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[150px]" data-datatable-column="lastSession">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Order Status
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Payment Status
                                                     </span>
                                                     <span class="sort-icon">
                                                     </span>
@@ -117,33 +180,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($outfits as $key => $item)
-                                        {{-- @dd($item) --}}
+                                        @if ($orders->isEmpty())
                                         <tr>
-                                            <td class="text-center">{{ $outfits->firstItem() + $key }}</td>
-                                            <td class="flex items-center justify-center">
-                                                <div class="flex items-center justify-center relative w-fit h-[120px] mb-4 rounded-lg bg-white shadow-none">
-                                                    <img src="{{ asset('storage/'.$item->images[0]->url) }}" class="h-[120px] shrink-0 cursor-pointer" alt="">
-                                                </div>
+                                            <td colspan="14">
+                                                <h3 class="text-lg text-center my-5">Empty Data</h3>
                                             </td>
-                                            <td>{{ $item->model_name }}</td>
-                                            <td>{{ $item->model_height }}</td>
-                                            <td>{{ $item->model_size }}</td>
-                                            <td>
-                                                <div class="flex items-center gap-2.5">
-                                                    <div class="switch switch-sm">
-                                                        <label class="switch-label" for="status">{{ $item->is_shown ? 'Shown' : 'Hidden' }}</label>
-                                                        <input wire:click="updateStatus({{ $item->id }})" type="checkbox" @if ($item->is_shown) checked @endif />
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center space-y-2">
-                                                <a href="{{ route('outfits.edit', [$item->id]) }}" class="btn btn-warning btn-sm">
+                                        </tr>
+                                        @endif
+                                        @foreach ($orders as $key => $item)
+                                        <tr>
+                                            <td class="text-center">{{ $orders->firstItem() + $key }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->info }}</td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td class="flex items-center gap-2">
+                                                <button type="button"  wire:click="$dispatchTo('orders.order-form', 'openModal', { id: {{ $item->id }} })" class="btn btn-warning btn-sm">
                                                     <i class="ki-filled ki-pencil">
                                                     </i>
                                                     Edit
-                                                </a>
-                                                <button wire:click="delete('{{ $item->id }}')" wire:confirm="Are you sure you want to delete this data?" type="button" class="btn btn-danger btn-sm">
+                                                </button>
+                                                <button type="button" wire:confirm="Are you sure you want to delete this data?" wire:click="$dispatchTo('orders.order-form', 'destroy', { id: {{ $item->id }} })" class="btn btn-danger btn-sm">
                                                     <i class="ki-filled ki-trash">
                                                     </i>
                                                     Delete
@@ -172,7 +228,7 @@
                                     <div class="pagination" data-datatable-pagination="true">
                                     </div>
                                 </div>
-                                {{ $outfits->links('vendor.livewire.tailwind') }}
+                                {{ $orders->links('vendor.livewire.tailwind') }}
                             </div>
                         </div>
                     </div>

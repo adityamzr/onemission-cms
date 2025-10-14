@@ -88,6 +88,8 @@
                                                 </span>
                                             </th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
                                         @foreach ($categories as $key => $item)
                                         <tr>
                                             <td class="text-center">{{ $categories->firstItem() + $key }}</td>
@@ -107,7 +109,8 @@
                                             </td>
                                         </tr>
                                         @endforeach
-                                    </thead>
+
+                                    </tbody>
                                 </table>
                             </div>
                             <div class="card-footer justify-between flex-col md:flex-row gap-3 text-gray-600 text-2sm font-medium">

@@ -14,7 +14,7 @@ class CategoryList extends Component
     #[Title('Categories')]
     public $title = 'Categories';
 
-    public $perpage = 5;
+    public $perpage = 10;
     public $search;
 
     protected $queryString = ['perpage', 'search'];

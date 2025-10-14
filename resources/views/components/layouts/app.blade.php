@@ -122,7 +122,7 @@
       </div>
       <!-- Secondary Menu -->
       <div class="menu flex flex-col w-full gap-1.5 px-3.5" data-menu="true" data-menu-accordion-expand-all="true" id="sidebar_secondary_menu">
-       <div class="menu-item show" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+       <div class="menu-item {{ request()->routeIs('orders') || request()->routeIs('orders.show') || request()->routeIs('orders.history') || request()->routeIs('orders.cancel') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-label flex items-center justify-between">
          <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
           <span class="menu-arrow me-2.5">
@@ -137,30 +137,46 @@
          </div>
         </div>
         <div class="menu-accordion">
-          <div class="menu-item active">
-            <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('products') }}">
-            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-              <i class="ki-filled ki-shop">
-              </i>
-            </span>
-            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-              Incoming Orders
-            </span>
+          <div class="menu-item {{ request()->routeIs('orders') || request()->routeIs('orders.show') ? 'active' : '' }}">
+            <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('orders') }}">
+              <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
+                <i class="ki-filled ki-shop">
+                </i>
+              </span>
+              <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
+                Incoming Orders
+              </span>
+              <span class="size-5 flex justify-center items-center font-semibold rounded-full text-xs text-success bg-success-light border border-success">
+                {{ \App\Models\Order::where('status', 'pending')
+                  ->orWhere('status', 'paid')
+                  ->orWhere('status', 'processing')
+                  ->orWhere('status', 'shipped')
+                  ->orWhere('status', 'delivered')
+                  ->orWhere('status', 'completed')
+                  ->count()  
+                }}
+              </span>
             </a>
           </div>
-         {{-- <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('outfits') }}">
+         <div class="menu-item {{ request()->routeIs('orders.cancel') ? 'active' : '' }}">
+          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('orders.cancel') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
-            <i class="ki-filled ki-abstract-26">
+            <i class="ki-filled ki-shield-cross">
             </i>
            </span>
            <span class="menu-title text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
-            Returns & Refunds
+            Cancel & Refunds
            </span>
+           <span class="size-5 flex justify-center items-center font-semibold rounded-full text-xs text-danger bg-danger-light border border-danger">
+              {{ \App\Models\Order::where('status', 'cancelling')
+                ->orWhere('status', 'cancelled')
+                ->count()  
+              }}
+            </span>
           </a>
-         </div> --}}
-         <div class="menu-item">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('categories') }}">
+         </div>
+         <div class="menu-item {{ request()->routeIs('orders.history') ? 'active' : '' }}">
+          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('orders.history') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
             <i class="ki-filled ki-cheque">
             </i>
@@ -216,7 +232,21 @@
        </div>
        <div class="border-b border-gray-300 mt-2 mb-1 mx-1.5">
        </div>
-        <div class="menu-item {{ request()->routeIs('products') || request()->routeIs('outfits') || request()->routeIs('categories') || request()->routeIs('tags') || request()->routeIs('discounts') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+        <div class="menu-item 
+        {{ 
+          request()->routeIs('products') ||
+          request()->routeIs('products.create') ||
+          request()->routeIs('products.edit') ||
+          request()->routeIs('products.show') ||
+          request()->routeIs('variants.create') ||
+          request()->routeIs('variants.edit') ||
+          request()->routeIs('outfits') || 
+          request()->routeIs('outfits.create') || 
+          request()->routeIs('outfits.edit') || 
+          request()->routeIs('categories') || 
+          request()->routeIs('tags') || 
+          request()->routeIs('discounts') ? 'show' : '' 
+        }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-label flex items-center justify-between">
          <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
           <span class="menu-arrow me-2.5">
@@ -231,7 +261,15 @@
          </div>
         </div>
         <div class="menu-accordion">
-          <div class="menu-item {{ request()->routeIs('products') ? 'active' : '' }}">
+          <div class="menu-item 
+            {{ 
+              request()->routeIs('products') || 
+              request()->routeIs('products.create') ||
+              request()->routeIs('products.edit') ||
+              request()->routeIs('products.show') ||
+              request()->routeIs('variants.create') ||
+              request()->routeIs('variants.edit') ? 'active' : '' 
+            }}">
             <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('products') }}">
             <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
               <i class="ki-filled ki-purchase">
@@ -242,7 +280,7 @@
             </span>
             </a>
           </div>
-         <div class="menu-item {{ request()->routeIs('outfits') ? 'active' : '' }}">
+         <div class="menu-item {{ request()->routeIs('outfits') || request()->routeIs('outfits.create') || request()->routeIs('outfits.edit') ? 'active' : '' }}">
           <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('outfits') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
             <i class="ki-filled ki-user-tick">

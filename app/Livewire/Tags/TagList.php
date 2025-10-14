@@ -11,7 +11,7 @@ class TagList extends Component
     #[Title('Tags')]
     public $title = 'Tags';
 
-    public $perpage = 5;
+    public $perpage = 10;
     public $search;
 
     protected $queryString = ['perpage', 'search'];

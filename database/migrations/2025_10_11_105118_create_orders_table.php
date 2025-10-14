@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('order_number')->unique();
-            $table->string('status')->default('pending'); //pending, paid, processing, shipped, delivered, completed, cancelled, refunded
+            $table->string('status')->default('pending'); //pending, paid, processing, shipped, delivered, completed, cancelling, cancelled, refunded
             $table->string('payment_status')->default('unpaid'); //unpaid, pending, paid, failed, refunded
             $table->string('shipping_provider');
             $table->decimal('shipping_cost', 10, 2);
