@@ -22,7 +22,8 @@ class Order extends Model
         'discount_id',
         'notes',
         'cancel_reason',
-        'expires_at'
+        'expires_at',
+        'payment_url'
     ];
 
     protected $casts = [
@@ -49,5 +50,15 @@ class Order extends Model
     public function shippingAddress()
     {
         return $this->hasOne(ShippingAddress::class, 'order_id');
+    }
+
+    public function shipmentTracking()
+    {
+        return $this->hasOne(ShipmentTracking::class, 'order_id');
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class, 'order_id');
     }
 }

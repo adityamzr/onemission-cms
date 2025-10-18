@@ -25,10 +25,15 @@ class OrderList extends Component
     {
         return view('livewire.orders.order-list', [
             'orders' => Order::where('status', 'pending')
+                ->orWhere('status', 'waiting payment')
                 ->orWhere('status', 'paid')
                 ->orWhere('status', 'processing')
                 ->orWhere('status', 'shipped')
                 ->orWhere('status', 'delivered')
+                ->orWhere(function ($query) {
+                    $query->where('status', 'cancelling')
+                        ->where('payment_status', '!=', 'paid');
+                })
                 ->orderBy('created_at', 'DESC')->paginate($this->perpage)
         ]);
     }

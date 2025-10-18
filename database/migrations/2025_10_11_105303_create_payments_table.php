@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
-            $table->string('payment_id')->unique();
-            $table->dateTime('payment_date');
+            $table->string('payment_id')->unique()->nullable();
+            $table->dateTime('payment_date')->nullable();
             $table->string('payment_reference')->nullable();
             $table->string('payment_proof')->nullable();
-            $table->string('payment_method'); //bank_transfer, ewallet, credit_card, cod
-            $table->string('payment_status')->default('pending'); //pending, paid, failed, refunded
+            $table->string('payment_method'); //qris, ewallet, va_mandiri, va_bca, credit_card
+            $table->string('payment_status')->default('unpaid'); //unpaid, paid, failed, refunded
             $table->string('refund_reason')->nullable();
+            $table->decimal('amount', 10, 2)->default(0);
             $table->timestamps();
         });
     }

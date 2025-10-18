@@ -122,7 +122,7 @@
       </div>
       <!-- Secondary Menu -->
       <div class="menu flex flex-col w-full gap-1.5 px-3.5" data-menu="true" data-menu-accordion-expand-all="true" id="sidebar_secondary_menu">
-       <div class="menu-item {{ request()->routeIs('orders') || request()->routeIs('orders.show') || request()->routeIs('orders.history') || request()->routeIs('orders.cancel') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+       <div class="menu-item {{ request()->routeIs('overview') || request()->routeIs('orders') || request()->routeIs('orders.show') || request()->routeIs('orders.history') || request()->routeIs('orders.cancel') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-label flex items-center justify-between">
          <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
           <span class="menu-arrow me-2.5">
@@ -148,11 +148,15 @@
               </span>
               <span class="size-5 flex justify-center items-center font-semibold rounded-full text-xs text-success bg-success-light border border-success">
                 {{ \App\Models\Order::where('status', 'pending')
+                  ->orWhere('status', 'waiting payment')
                   ->orWhere('status', 'paid')
                   ->orWhere('status', 'processing')
                   ->orWhere('status', 'shipped')
                   ->orWhere('status', 'delivered')
-                  ->orWhere('status', 'completed')
+                  ->orWhere(function ($query) {
+                    $query->where('status', 'cancelling')
+                        ->where('payment_status', '!=', 'paid');
+                  })
                   ->count()  
                 }}
               </span>
@@ -169,7 +173,7 @@
            </span>
            <span class="size-5 flex justify-center items-center font-semibold rounded-full text-xs text-danger bg-danger-light border border-danger">
               {{ \App\Models\Order::where('status', 'cancelling')
-                ->orWhere('status', 'cancelled')
+                ->where('payment_status', 'paid')
                 ->count()  
               }}
             </span>

@@ -24,9 +24,7 @@ class CancelList extends Component
     public function render()
     {
         return view('livewire.orders.cancel-list', [
-            'orders' => Order::where('status', 'cancelling')
-                ->orWhere('status', 'cancelled')
-                ->orderBy('created_at', 'DESC')->paginate($this->perpage)
+            'orders' => Order::where('status', 'cancelling')->where('payment_status', 'paid')->orderBy('created_at', 'DESC')->paginate($this->perpage)
         ]);
     }
 }

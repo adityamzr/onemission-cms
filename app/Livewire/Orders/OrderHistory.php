@@ -24,7 +24,9 @@ class OrderHistory extends Component
     public function render()
     {
         return view('livewire.orders.order-history', [
-            'orders' => Order::where('status', 'completed')->orderBy('created_at', 'DESC')->paginate($this->perpage)
+            'orders' => Order::where('status', 'completed')
+                ->orWhere('status', 'cancelled')
+                ->orderBy('created_at', 'DESC')->paginate($this->perpage)
         ]);
     }
 }

@@ -60,7 +60,16 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[200px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[200px] text-center" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Order Date/Time
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[200px] text-center" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Order Number
@@ -69,7 +78,7 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[200px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[200px] text-center" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Name
@@ -78,7 +87,7 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[200px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[200px] text-center" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Email
@@ -87,7 +96,7 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[150px] text-center" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Phone
@@ -96,7 +105,7 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[150px] text-center" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Order Items
@@ -105,25 +114,7 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[180px]" data-datatable-column="ipAddress">
-                                                <span class="sort">
-                                                    <span class="sort-label">
-                                                    Shipping Provider
-                                                    </span>
-                                                    <span class="sort-icon">
-                                                    </span>
-                                                </span>
-                                            </th>
-                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
-                                                <span class="sort">
-                                                    <span class="sort-label">
-                                                    Shipping Cost
-                                                    </span>
-                                                    <span class="sort-icon">
-                                                    </span>
-                                                </span>
-                                            </th>
-                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[150px] text-center" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Discount
@@ -132,7 +123,7 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[150px] text-center" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Subtotal
@@ -141,16 +132,34 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[180px] text-center" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
-                                                    Total
+                                                    Shipping Provider
                                                     </span>
                                                     <span class="sort-icon">
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[150px]" data-datatable-column="lastSession">
+                                            <th class="min-w-[150px] text-center" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Shipping Cost
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[150px] text-center" data-datatable-column="ipAddress">
+                                                <span class="sort">
+                                                    <span class="sort-label">
+                                                    Total Payment
+                                                    </span>
+                                                    <span class="sort-icon">
+                                                    </span>
+                                                </span>
+                                            </th>
+                                            <th class="min-w-[150px] text-center" data-datatable-column="lastSession">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Order Status
@@ -159,7 +168,7 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="min-w-[150px]" data-datatable-column="ipAddress">
+                                            <th class="min-w-[150px] text-center" data-datatable-column="ipAddress">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Payment Status
@@ -168,7 +177,7 @@
                                                     </span>
                                                 </span>
                                             </th>
-                                            <th class="w-[185px]" data-datatable-column="label">
+                                            <th class="w-[100px] sticky right-0 text-center" data-datatable-column="label">
                                                 <span class="sort">
                                                     <span class="sort-label">
                                                     Action
@@ -190,19 +199,67 @@
                                         @foreach ($orders as $key => $item)
                                         <tr>
                                             <td class="text-center">{{ $orders->firstItem() + $key }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->info }}</td>
-                                            <td>{{ $item->created_at }}</td>
-                                            <td class="flex items-center gap-2">
-                                                <button type="button"  wire:click="$dispatchTo('orders.order-form', 'openModal', { id: {{ $item->id }} })" class="btn btn-warning btn-sm">
-                                                    <i class="ki-filled ki-pencil">
+                                            <td class="text-center">{{ $item->created_at }}</td>
+                                            <td class="text-center">{{ $item->order_number }}</td>
+                                            <td class="text-center">{{ $item->name }}</td>
+                                            <td class="text-center">{{ $item->email }}</td>
+                                            <td class="text-center">{{ $item->phone }}</td>
+                                            <td class="text-center">{{ $item->orderItems->count() }}</td>
+                                            <td class="text-center">
+                                                @if (!empty($item->discount))
+                                                    @if ($item->discount->type == 'percentage')
+                                                        {{ $item->discount->value }}%
+                                                    @else
+                                                        {{ formatRupiah($item->discount->value) }}
+                                                    @endif
+                                                @else
+                                                    -
+                                                @endif
+                                            </td>
+                                            <td class="text-center">{{ formatRupiah($item->subtotal) }}</td>
+                                            <td class="text-center">{{ $item->shipping_provider }}</td>
+                                            <td class="text-center">{{ formatRupiah($item->shipping_cost) }}</td>
+                                            <td class="text-center">{{ formatRupiah($item->total_amount) }}</td>
+                                            <td class="text-center">
+                                                @php
+                                                    switch ($item->status) {
+                                                        case 'completed':
+                                                            $colorStatus = 'success';
+                                                            break;
+                                                        case 'cancelled':
+                                                            $colorStatus = 'danger';
+                                                            break;
+                                                        default:
+                                                            $colorStatus = 'secondary';
+                                                            break;
+                                                    }
+                                                @endphp
+                                                <div class="badge badge-pill badge-outline badge-{{ $colorStatus }} capitalize">{{ $item->status }}</div>
+                                            </td>
+                                            <td class="text-center">
+                                                @php
+                                                    switch ($item->payment_status) {
+                                                        case 'unpaid':
+                                                            $color = 'danger';
+                                                            break;
+                                                        case 'paid':
+                                                            $color = 'success';
+                                                            break;
+                                                        case 'failed':
+                                                            $color = 'danger';
+                                                            break;
+                                                        default:
+                                                            $color = 'secondary';
+                                                            break;
+                                                    }
+                                                @endphp
+                                                <div class="badge badge-pill badge-outline badge-{{ $color }} capitalize">{{ $item->payment_status }}</div>
+                                            </td>
+                                            <td class="flex items-center gap-2 sticky right-0 bg-white z-10 border-l">
+                                                <button type="button"  wire:click="$dispatchTo('orders.order-detail', 'openModal', { id: {{ $item->id }} })" class="btn btn-primary btn-sm">
+                                                    <i class="ki-filled ki-eye">
                                                     </i>
-                                                    Edit
-                                                </button>
-                                                <button type="button" wire:confirm="Are you sure you want to delete this data?" wire:click="$dispatchTo('orders.order-form', 'destroy', { id: {{ $item->id }} })" class="btn btn-danger btn-sm">
-                                                    <i class="ki-filled ki-trash">
-                                                    </i>
-                                                    Delete
+                                                    View
                                                 </button>
                                             </td>
                                         </tr>
@@ -236,5 +293,6 @@
             {{-- end: table --}}
         </div>
         <!-- End of Container -->
+        @livewire('orders.order-detail')
     </main>
 </div>
