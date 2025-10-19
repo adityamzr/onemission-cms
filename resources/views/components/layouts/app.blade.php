@@ -122,7 +122,7 @@
       </div>
       <!-- Secondary Menu -->
       <div class="menu flex flex-col w-full gap-1.5 px-3.5" data-menu="true" data-menu-accordion-expand-all="true" id="sidebar_secondary_menu">
-       <div class="menu-item {{ request()->routeIs('overview') || request()->routeIs('orders') || request()->routeIs('orders.show') || request()->routeIs('orders.history') || request()->routeIs('orders.cancel') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+       <div class="menu-item show" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-label flex items-center justify-between">
          <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
           <span class="menu-arrow me-2.5">
@@ -195,7 +195,7 @@
        <div class="border-b border-gray-300 mt-2 mb-1 mx-1.5">
        </div>
        
-       <div class="menu-item" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
+       <div class="menu-item {{ request()->routeIs('payments') ? 'show' : '' }}" data-menu-item-toggle="accordion" data-menu-item-trigger="click">
         <div class="menu-label flex items-center justify-between">
          <div class="menu-toggle cursor-pointer pb-2 pt-3 ps-[14.5px] rounded-md border border-transparent">
           <span class="menu-arrow me-2.5">
@@ -210,8 +210,8 @@
          </div>
         </div>
         <div class="menu-accordion">
-        <div class="menu-item active">
-          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="">
+        <div class="menu-item {{ request()->routeIs('payments') ? 'active' : '' }}">
+          <a class="menu-link py-1 px-2 my-0.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200" href="{{ route('payments') }}">
            <span class="menu-icon text-gray-800 menu-link-hover:text-gray-900 rounded-md flex place-content-center size-7 me-2.5 bg-gray-200 border border-gray-300 menu-item-active:border-none menu-link-hover:border-light menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-none dark:menu-item-active:text-gray-900 menu-icon-xs">
             <i class="ki-filled ki-dollar">
             </i>

@@ -7,6 +7,7 @@ use App\Jobs\ProcessOrderJob;
 use App\Models\Order;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -125,27 +126,57 @@ class OrderController extends Controller
         // update the order status based on payment result, etc.
 
         try {
-            Order::where('id', $request->input('order_id'))->update([
-                'status' => 'paid',
-                'payment_status' => 'paid',
+            DB::beginTransaction();
+            $order = Order::where('id', $request->input('order_id'))->first();
+
+            if (!$order) {
+                return response()->json(['message' => 'Order not found'], 404);
+            }
+
+            $paymentStatus = $request->input('status') == 'success' ? 'paid' : 'failed';
+
+            $order->update([
+                'status' => $request->input('status'),
+                'payment_status' => $paymentStatus,
             ]);
 
+            if ($paymentStatus == 'paid') {
+                // Reduce stock, send confirmation email, etc.
+                foreach ($order->orderItems as $item) {
+                    $variantSize = $item->variant->sizes()->where('id', $item->size_id)->first();
+                    if ($variantSize) {
+                        $variantSize->decrement('reserved_stock', $item->quantity);
+                    }
+                }
+            } else {
+                // Handle payment failure (e.g., release reserved stock)
+                foreach ($order->orderItems as $item) {
+                    $variantSize = $item->variant->sizes()->where('id', $item->size_id)->first();
+                    if ($variantSize) {
+                        $variantSize->increment('stock', $item->quantity);
+                        $variantSize->decrement('reserved_stock', $item->quantity);
+                    }
+                }
+            }
+
             $payid = 'PAY' . now()->format('ymdHis') . strtoupper(Str::random(3));
-            Payment::where('order_id', $request->input('order_id'))->update([
+            Payment::where('order_id', $order->id)->update([
                 'payment_id' => $payid,
                 'payment_date' => now(),
                 // 'payment_reference' => null,
                 // 'payment_method' => '',
-                'payment_status' => 'paid',
+                'payment_status' => $paymentStatus,
                 'amount' => $request->input('amount'),
             ]);
 
+            DB::commit();
             return response()->json([
-                'status' => 'success',
-                'message' => 'Payment Succeed'
+                'status' => $request->input('status'),
+                'message' => 'Payment ' . ucfirst($request->input('status'))
             ], 200);
         } catch (\Throwable $th) {
             Log::error('Failed to process payment callback: ' . $th->getMessage());
+            DB::rollBack();
             return response()->json([
                 'status' => 'error',
                 'message' => 'Failed to process payment callback.',

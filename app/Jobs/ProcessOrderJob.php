@@ -84,10 +84,10 @@ class ProcessOrderJob implements ShouldQueue
                         return response()->json(['message' => 'Discount not found'], 404);
                     }
 
-                    if ($discount->type == 'Percentage') {
-                        $totalDiscount = ($discount->value / 100) * $subtotal;
-                    } else {
+                    if ($discount->type == 'Fixed') {
                         $totalDiscount = $discount->value;
+                    } else {
+                        $totalDiscount = ($discount->value / 100) * $subtotal;
                     }
                 }
 

@@ -11,6 +11,7 @@ use App\Livewire\Orders\OrderList;
 use App\Livewire\Outfits\OutfitForm;
 use App\Livewire\Outfits\OutfitList;
 use App\Livewire\Overview;
+use App\Livewire\Payments\PaymentList;
 use App\Livewire\Products\ProductForm;
 use App\Livewire\Products\ProductList;
 use App\Livewire\Products\Variants\VariantForm;
@@ -37,6 +38,8 @@ Route::prefix('/orders')->group(function () {
     Route::get('/cancel', CancelList::class)->name('orders.cancel');
     Route::get('/history', OrderHistory::class)->name('orders.history');
 });
+
+Route::get('/payments', PaymentList::class)->name('payments');
 
 Route::prefix('products')->group(function () {
     Route::get('/', ProductList::class)->name('products');
