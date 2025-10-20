@@ -31,4 +31,9 @@ class Variant extends Model
     {
         return $this->hasMany(VariantDetail::class, 'variant_id');
     }
+
+    public function outfitItems()
+    {
+        return $this->hasMany(OutfitVariants::class, 'variant_id');
+    }
 }

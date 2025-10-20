@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\DiscountController;
 use App\Http\Controllers\Api\GalleryController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -14,10 +15,15 @@ Route::prefix('v1')->group(function () {
     Route::post('/{orderNumber}/received', [OrderController::class, 'received']);
   });
 
-  Route::get('/banners', [BannerController::class, 'getAll']);
-  Route::get('/gallery', [GalleryController::class, 'getAll']);
+  Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'getProducts']);
+    Route::get('/{slug}', [ProductController::class, 'getProductDetail']);
+  });
 
   Route::prefix('discount')->group(function () {
     Route::post('/check', [DiscountController::class, 'checkDiscount']);
   });
+
+  Route::get('/banners', [BannerController::class, 'getAll']);
+  Route::get('/gallery', [GalleryController::class, 'getAll']);
 });
