@@ -123,4 +123,47 @@ class ProductController extends Controller
             'data' => $data
         ]);
     }
+
+    public function getOutfits()
+    {
+        $outfits = Outfit::with('variants.product.category', 'variants.sizes', 'variants.images')->where('is_shown', true)->orderBy('id', 'desc')->get();
+
+        $data = [];
+        foreach ($outfits as $outfit) {
+            if ($outfit->variants->isEmpty()) continue;
+
+            $items = [
+                'id' => $outfit->id,
+                'model_name' => $outfit->model_name,
+                'model_height' => $outfit->model_height,
+                'model_size' => $outfit->model_size,
+                'is_shown' => true,
+                'outfitItems' => $outfit->variants->where('is_active', true)->map(function ($variant) {
+                    return [
+                        'id' => $variant->id,
+                        'product_id' => $variant->product->id ?? null,
+                        'name' => $variant->product->name ?? null,
+                        'slug' => $variant->slug,
+                        'price' => $variant->product->price ?? null,
+                        'category' => $variant->product->category->name ?? null,
+                        'color' => $variant->color,
+                        'in_stock' => $variant->in_stock,
+                        'image' => optional($variant->images->firstWhere('is_primary', true))->image_url ?? optional($variant->images->first())->image_url,
+                        'sizes' => $variant->sizes->map(function ($size) {
+                            return [
+                                'id' => $size->id,
+                                'name' => $size->size,
+                                'stock' => $size->stock ?? null
+                            ];
+                        }),
+                    ];
+                }),
+            ];
+            $data[] = $items;
+        }
+
+        return response()->json([
+            'data' => $data
+        ]);
+    }
 }

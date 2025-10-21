@@ -20,6 +20,10 @@ Route::prefix('v1')->group(function () {
     Route::get('/{slug}', [ProductController::class, 'getProductDetail']);
   });
 
+  Route::prefix('outfits')->group(function () {
+    Route::get('/', [ProductController::class, 'getOutfits']);
+  });
+
   Route::prefix('discount')->group(function () {
     Route::post('/check', [DiscountController::class, 'checkDiscount']);
   });
