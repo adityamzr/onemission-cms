@@ -10,7 +10,13 @@ class BannerController extends Controller
 {
     public function getAll()
     {
-        $banners = Banner::select('id', 'url', 'is_primary')->where('is_active', true)->get();
+        $banners = Banner::select('id', 'url', 'is_primary')
+            ->where('is_active', true)
+            ->get()
+            ->map(function ($banner) {
+                $banner->url = asset('storage/' . $banner->url);
+                return $banner;
+            });
 
         if (!$banners) {
             return response()->json([

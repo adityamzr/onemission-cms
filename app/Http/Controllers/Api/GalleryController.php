@@ -10,7 +10,13 @@ class GalleryController extends Controller
 {
     public function getAll()
     {
-        $gallery = Gallery::select('id', 'url')->where('is_active', true)->get();
+        $gallery = Gallery::select('id', 'url')
+            ->where('is_active', true)
+            ->get()
+            ->map(function ($gallery) {
+                $gallery->url = asset('storage/' . $gallery->url);
+                return $gallery;
+            });
 
         if (!$gallery) {
             return response()->json([

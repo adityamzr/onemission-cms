@@ -26,14 +26,14 @@ class ProductController extends Controller
                     'category' => $product->category?->name ?? null,
                     'color' => $variant->color,
                     'colorCode' => $variant->color_code,
-                    'images' => [$product->image],
+                    'images' => [asset('storage/' . $product->image)],
                     'otherVariants' => $product->variants
                         ->where('id', '!=', $variant->id)
                         ->map(fn($v) => [
                             'variantId' => $v->id,
                             'colorCode' => $v->color_code,
                             'slug' => $v->slug,
-                            'images' => $v->images->pluck('image_url'),
+                            'images' => $v->images->pluck('image_url')->map(fn($url) => asset('storage/' . $url)),
                         ])
                         ->values(),
                     'isActive' => $variant->is_active,
@@ -77,7 +77,7 @@ class ProductController extends Controller
                     'id' => $v->id,
                     'colorCode' => $v->color_code,
                     'slug' => $v->slug,
-                    'images' => $v->images->pluck('image_url')
+                    'images' => $v->images->pluck('image_url')->map(fn($url) => asset('storage/' . $url)),
                 ])
                 ->values(),
             'isActive' => $variant->is_active,
@@ -110,7 +110,7 @@ class ProductController extends Controller
                     'size' => $s->size,
                     'stock' => $s->stock,
                 ]),
-                'images' => $variant->images->pluck('image_url'),
+                'images' => $variant->images->pluck('image_url')->map(fn($url) => asset('storage/' . $url)),
                 'outfit' => Outfit::with('images')->where('id', $variant->outfit_id)->first(),
                 'details' => $variant->details->map(fn($d) => [
                     'info' => $d->info,
@@ -148,7 +148,10 @@ class ProductController extends Controller
                         'category' => $variant->product->category->name ?? null,
                         'color' => $variant->color,
                         'in_stock' => $variant->in_stock,
-                        'image' => optional($variant->images->firstWhere('is_primary', true))->image_url ?? optional($variant->images->first())->image_url,
+                        'image' => asset('storage/' . (
+                            optional($variant->images->firstWhere('is_primary', true))->image_url
+                            ?? optional($variant->images->first())->image_url
+                        )),
                         'sizes' => $variant->sizes->map(function ($size) {
                             return [
                                 'id' => $size->id,
